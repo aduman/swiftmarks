@@ -1,0 +1,18 @@
+<div id="bookmarks-menu">
+  <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
+</div>
+
+<div id="bookmarks-list">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="bookmark">
+      <div class="title">
+        <%= link_to bookmark.title, bookmark.url %>
+      </div>
+      <div class="actions">
+        <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
+        <span class="gray">|</span>
+        <%= link_to "Delete", bookmark_url(bookmark), :method => :delete, :class => "delete-bookmark-link" %>
+      </div>
+    </div>
+  <% end %>
+</div>

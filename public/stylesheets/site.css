@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+div#header {
+  background-color: #333;
+  color: #FFF;
+  padding: 10px;
+}
+
+div#header span#logo {
+  font-size: 1.5em; 
+}
+
+div#sidebar {
+  background-color: #E6E6E6;
+  float: left;
+  padding: 15px;
+  width: 200px
+}
+
+div#content {
+  margin: 10px 10px 10px 240px;
+}
+
+div#bookmarks-menu {
+  padding: 5px;
+}
+
+a#add-bookmark-link {
+  color: green;
+}
+
+a.edit-bookmark-link {
+}
+
+a.delete-bookmark-link {
+  color: red;
+}
+
+div#bookmarks-list {
+}
+
+div.bookmark {
+  border: solid 1px #D3D3D3;
+  margin: 10px 0px;
+  padding: 10px;
+}
+
+div.bookmark div.actions {
+  font-size: 0.9em;
+  margin-top: 10px;
+}
