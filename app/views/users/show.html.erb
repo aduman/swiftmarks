@@ -1,0 +1,8 @@
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path %>
+<%= link_to 'Logout', user_session_path, :method => :delete %>

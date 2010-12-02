@@ -56,5 +56,10 @@ Swiftmarks::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
+  resource :account, :controller => "users"
+  resource :user_session
   resources :bookmarks
+  resources :users
+
+  root :to => "user_sessions#new"
 end
