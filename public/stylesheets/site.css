@@ -52,3 +52,24 @@ div.bookmark div.actions {
   font-size: 0.9em;
   margin-top: 10px;
 }
+
+/* ===== LOGIN ===== */
+
+body#login {
+}
+
+body#login div#content {
+  margin: 10px;
+}
+
+body#login div#login-form-container {
+  border: solid 4px #D3D3D3;
+  background-color: #F6F6F6;
+  margin: 0 auto;
+  padding: 20px;
+  width: 400px;
+}
+
+body#login div#login-form-container h2 {
+  margin-bottom: 20px; 
+}
