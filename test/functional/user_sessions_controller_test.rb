@@ -8,7 +8,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
 
   test "should create user session" do
-    post :create, :user_session => { :email => "josh@localhost", :password => "secret123" }
+    post :create, :user_session => { :email => "joshorourke@me.com", :password => "secret123" }
     assert user_session = UserSession.find
     assert_equal users(:josh), user_session.user
     assert_redirected_to bookmarks_url
