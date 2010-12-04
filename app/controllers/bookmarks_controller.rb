@@ -26,7 +26,7 @@ class BookmarksController < ApplicationController
     @bookmark.attributes = params[:bookmark]
     @bookmark.save!
     redirect_to bookmarks_url
-  rescue ActionRecord::RecordInvalid
+  rescue ActiveRecord::RecordInvalid
     render "_form"
   end
 
