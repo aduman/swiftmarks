@@ -1,7 +1,11 @@
+/* ===== COMMON ===== */
+
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
 }
+
+/* ===== HEADER ===== */
 
 div#header {
   background-color: #333;
@@ -11,6 +15,14 @@ div#header {
 
 div#header span#logo {
   font-size: 1.5em; 
+}
+
+div#header a#logout-link {
+  color: #FFF;
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 0.8em;
 }
 
 div#sidebar {

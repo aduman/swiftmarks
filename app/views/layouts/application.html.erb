@@ -10,6 +10,10 @@
 
   <div id="header">
     <span id="logo">Swiftmarks</span>
+
+    <% if current_user %>
+      <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
+    <% end %>
   </div>
 
   <div id="sidebar">
