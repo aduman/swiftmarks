@@ -1,7 +1,7 @@
 <div id="login-form-container">
   <h2>Login</h2>
 
-  <% form_for @user_session, :as => :user_session,  :url => user_session_path do |f| %>
+  <%= form_for @user_session, :as => :user_session,  :url => user_session_path do |f| %>
     <%= f.label :email %><br />
     <%= f.text_field :email %><br />
     <br />
