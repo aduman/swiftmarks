@@ -1,6 +1,12 @@
 class BookmarksController < ApplicationController
+  before_filter :find_tags
+
   def index
-    @bookmarks = current_user.bookmarks.all
+    if (params[:tag])
+      @bookmarks = current_user.bookmarks.tagged_with(params[:tag])
+    else
+      @bookmarks = current_user.bookmarks.all
+    end
   end
 
   def new
@@ -34,5 +40,11 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.delete
     redirect_to bookmarks_url
+  end
+
+  private 
+
+  def find_tags
+    @tags = current_user.bookmarks.tag_counts_on(:tags)
   end
 end

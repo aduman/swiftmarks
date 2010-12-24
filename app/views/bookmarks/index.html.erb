@@ -1,3 +1,13 @@
+<% content_for(:sidebar) do %>
+  <h2>Tags</h2>
+
+  <%= link_to "Show All", bookmarks_url %><br/>
+
+  <% @tags.each do |tag| %>
+    <%= link_to tag.name, bookmarks_url(:tag => tag.name) %><br/>
+  <% end %>
+<% end %>
+
 <div id="bookmarks-menu">
   <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
 </div>
