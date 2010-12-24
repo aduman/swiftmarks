@@ -10,4 +10,9 @@ class BookmarkTest < ActiveSupport::TestCase
     bookmark = Bookmark.create
     assert bookmark.errors.has_key?(:title)
   end
+
+  test "should validate presence of :user_id" do
+    bookmark = Bookmark.create
+    assert bookmark.errors.has_key?(:user_id)
+  end
 end

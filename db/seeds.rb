@@ -5,16 +5,3 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-
-Bookmark.create([
-  { 
-    :url => "http://www.google.com",
-    :title => "Google",
-    :description => "Search the web"
-  },
-  {
-    :url => "http://www.amazon.com",
-    :title => "Amazon",
-    :description => "Shop online"
-  }
-])

@@ -1,3 +1,5 @@
 class Bookmark < ActiveRecord::Base
-  validates_presence_of :url, :title
+  belongs_to :user
+
+  validates_presence_of :url, :title, :user_id
 end

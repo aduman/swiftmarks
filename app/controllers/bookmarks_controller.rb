@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = current_user.bookmarks.all
   end
 
   def new
@@ -9,7 +9,7 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmark.new(params[:bookmark])
+    @bookmark = current_user.bookmarks.new(params[:bookmark])
     @bookmark.save!
     redirect_to bookmarks_url
   rescue ActiveRecord::RecordInvalid
@@ -17,12 +17,12 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_user.bookmarks.find(params[:id])
     render "_form"
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.attributes = params[:bookmark]
     @bookmark.save!
     redirect_to bookmarks_url
@@ -31,7 +31,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.delete
     redirect_to bookmarks_url
   end

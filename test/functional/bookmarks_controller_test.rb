@@ -2,6 +2,7 @@ require 'test_helper'
 
 class BookmarksControllerTest < ActionController::TestCase
   setup do
+    UserSession.create(users(:josh))
     @bookmark = bookmarks(:google)
   end
 
