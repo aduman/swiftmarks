@@ -11,9 +11,13 @@
   <div id="wrapper">
     <div id="header">
       <span id="logo">Swiftmarks</span>
-
+      
       <% if current_user %>
-        <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
+        <div id="navigation">
+          <a href="javascript:if(document.getSelection){s=document.getSelection();}else{s='';};document.location='http://localhost:3000/bookmarks/new?source=bookmarklet&url='+encodeURIComponent(location.href)+'&description='+encodeURIComponent(s)+'&title='+encodeURIComponent(document.title)">Bookmarklet</a>
+          <span class="pipe">|</span>
+          <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
+        </div>
       <% end %>
     </div>
 

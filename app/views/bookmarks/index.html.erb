@@ -3,7 +3,7 @@
 
   <p>
     <% @tags.each do |tag| %>
-      <%= link_to tag.name, bookmarks_url(:tag => tag.name) %><br/>
+      <%= link_to "#{tag.name} (#{tag.count})", bookmarks_url(:tag => tag.name) %><br/>
     <% end %>
   </p>
   

@@ -33,7 +33,8 @@ div#header span#logo {
   font-size: 1.75em; 
 }
 
-div#header a#logout-link {
+div#header div#navigation {
+  display: inline;
   float: right;
   font-size: 0.8em;
   margin-top: 7px;

@@ -10,14 +10,24 @@ class BookmarksController < ApplicationController
   end
 
   def new
-    @bookmark = Bookmark.new
+    @bookmark = Bookmark.new({
+      :url => params[:url],
+      :title => params[:title],
+      :description => params[:description]
+    })
+
     render "_form"
   end
 
   def create
     @bookmark = current_user.bookmarks.new(params[:bookmark])
     @bookmark.save!
-    redirect_to bookmarks_url
+
+    if (params[:source] == "bookmarklet")
+      redirect_to @bookmark.url
+    else
+      redirect_to bookmarks_url
+    end
   rescue ActiveRecord::RecordInvalid
     render "_form"
   end
@@ -45,6 +55,6 @@ class BookmarksController < ApplicationController
   private 
 
   def find_tags
-    @tags = current_user.bookmarks.tag_counts_on(:tags)
+    @tags = current_user.bookmarks.tag_counts_on(:tags).sort_by(&:name)
   end
 end
