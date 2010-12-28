@@ -5,39 +5,56 @@ body {
   font-size: 16px;
 }
 
+h1, h2, h3, h4 {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #666;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
 /* ===== HEADER ===== */
 
+div#wrapper {
+  margin: 0 auto;
+  width: 960px;
+}
+
 div#header {
-  background-color: #333;
-  color: #FFF;
-  padding: 10px;
+  color: #333;
+  padding: 10px 0px;
 }
 
 div#header span#logo {
-  font-size: 1.5em; 
+  font-size: 1.75em; 
 }
 
 div#header a#logout-link {
-  color: #FFF;
   float: right;
-  margin-right: 10px;
-  margin-top: 5px;
   font-size: 0.8em;
+  margin-top: 7px;
+}
+
+div#separator {
+  background-color: #333;
+  height: 5px; 
+  margin-bottom: 20px;
 }
 
 div#sidebar {
-  background-color: #E6E6E6;
   float: left;
-  padding: 15px;
-  width: 200px
+  width: 220px
 }
 
 div#content {
-  margin: 10px 10px 10px 240px;
+  margin: 10px 0px 0px 230px;
 }
 
 div#bookmarks-menu {
-  padding: 5px;
 }
 
 a#add-bookmark-link {
@@ -45,24 +62,33 @@ a#add-bookmark-link {
 }
 
 a.edit-bookmark-link {
+  color: #666 !important;
 }
 
 a.delete-bookmark-link {
-  color: red;
+  color: red !important;
 }
 
 div#bookmarks-list {
 }
 
 div.bookmark {
-  border: solid 1px #D3D3D3;
+  border-top: solid 1px #D3D3D3;
   margin: 10px 0px;
   padding: 10px;
 }
 
+div.bookmark a {
+  color: #333;
+  font-size: 1.25em;
+}
+
 div.bookmark div.actions {
+  margin-top: 5px;
+}
+
+div.bookmark div.actions a {
   font-size: 0.9em;
-  margin-top: 10px;
 }
 
 /* ===== LOGIN ===== */
@@ -75,8 +101,7 @@ body#login div#content {
 }
 
 body#login div#login-form-container {
-  border: solid 4px #D3D3D3;
-  background-color: #F6F6F6;
+  border: solid 1px #D3D3D3;
   margin: 0 auto;
   padding: 20px;
   width: 400px;

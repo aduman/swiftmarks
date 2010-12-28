@@ -1,11 +1,13 @@
 <% content_for(:sidebar) do %>
   <h2>Tags</h2>
 
-  <%= link_to "Show All", bookmarks_url %><br/>
-
-  <% @tags.each do |tag| %>
-    <%= link_to tag.name, bookmarks_url(:tag => tag.name) %><br/>
-  <% end %>
+  <p>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, bookmarks_url(:tag => tag.name) %><br/>
+    <% end %>
+  </p>
+  
+  <p><%= link_to "Show All", bookmarks_url %></p>
 <% end %>
 
 <div id="bookmarks-menu">
