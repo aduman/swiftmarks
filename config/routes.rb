@@ -58,8 +58,14 @@ Swiftmarks::Application.routes.draw do
 
   resource :account, :controller => "users"
   resource :user_session
-  resources :bookmarks
   resources :users
+  
+  resources :bookmarks do
+    collection do
+      get 'import'
+      post 'import'
+    end
+  end
 
   root :to => "user_sessions#new"
 end

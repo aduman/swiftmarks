@@ -16,6 +16,8 @@
         <div id="navigation">
           <%= link_to "Bookmarklet", bookmarklet_url %>
           <span class="pipe">|</span>
+          <%= link_to "Import", import_bookmarks_url %>
+          <span class="pipe">|</span>
           <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
         </div>
       <% end %>

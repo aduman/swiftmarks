@@ -52,6 +52,19 @@ class BookmarksController < ApplicationController
     redirect_to bookmarks_url
   end
 
+  def import
+    if request.post?
+      file_data = params[:file]
+      if file_data.blank?
+        flash[:error] = "File cannot be empty!"
+      else
+        Bookmark.import(file_data, current_user.id)
+        flash[:notice] = "Bookmarks successfully imported!"
+        redirect_to bookmarks_url
+      end
+    end
+  end
+
   private 
 
   def find_tags
