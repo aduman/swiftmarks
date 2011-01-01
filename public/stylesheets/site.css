@@ -6,6 +6,7 @@ body {
 }
 
 h1, h2, h3, h4 {
+  line-height: 1.0;
   margin-bottom: 10px;
 }
 
@@ -91,6 +92,15 @@ form em {
   color: red;
 }
 
+.field_with_errors {
+  display: inline;
+}
+
+.formError {
+  color: red;
+  font-size: 0.75em;
+}
+
 
 /* ===== BOOKMARKS ===== */
 
@@ -130,10 +140,6 @@ div.bookmark div.actions {
 div.bookmark div.actions a {
   font-size: 0.9em;
 }
-
-
-
-
 
 
 /* ===== LOGIN ===== */

@@ -16,16 +16,16 @@
   </p>
 <% end %>
 
-<h2>Add Bookmark</h2>
-
 <%= form_for @bookmark do |f| %>
   <p>
     <%= f.label :url, "URL" %><em>*</em><br/>
     <%= f.text_field :url, :style => "width: 350px" %>
+    <%= f.error_message_on :url, :prepend_text => "URL " %>
   </p>
   <p>
     <%= f.label :title %><em>*</em><br/>
     <%= f.text_field :title, :style => "width: 350px" %>
+    <%= f.error_message_on :title, :prepend_text => "Title " %>
   </p>
   <p>
     <%= f.label :description %><br/>
