@@ -2,12 +2,9 @@ class BookmarksController < ApplicationController
   before_filter :find_tags
 
   def index
-    if (params[:tag])
-      @bookmarks = current_user.bookmarks.tagged_with(params[:tag])
-    else
-      @bookmarks = current_user.bookmarks
-    end
-
+    tag = params[:tag]
+    @bookmarks = current_user.bookmarks
+    @bookmarks = @bookmarks.tagged_with(tag) unless tag.blank?
     @bookmarks = @bookmarks.order("id desc")
   end
 
@@ -70,6 +67,6 @@ class BookmarksController < ApplicationController
   private 
 
   def find_tags
-    @tags = current_user.bookmarks.tag_counts_on(:tags).sort_by(&:name)
+    @tags = current_user.tags.sort_by(&:name)
   end
 end
