@@ -13,9 +13,32 @@ a {
   color: #666;
 }
 
-p {
-  margin-bottom: 10px;
+a.bookmarklet {
+  background-color: #999;
+  border: solid 1px #666;
+  color: #FFF;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 5px;
 }
+
+a.link-button {
+  color: #000;
+  font-size: 0.9em;
+}
+
+p {
+  margin: 1em 0em;
+}
+
+.center {
+  text-align: center;
+}
+
+.weak {
+  color: #666;
+}
+
 
 /* ===== HEADER ===== */
 
@@ -46,14 +69,30 @@ div#separator {
   margin-bottom: 20px;
 }
 
+
+/* ===== SIDEBAR ===== */
+
 div#sidebar {
   float: left;
   width: 220px
 }
 
+
+/* ===== CONTENT ===== */
+
 div#content {
-  margin: 10px 0px 0px 230px;
+  margin: 10px 0px 0px 240px;
 }
+
+
+/* ===== FORMS ===== */
+
+form em {
+  color: red;
+}
+
+
+/* ===== BOOKMARKS ===== */
 
 div#bookmarks-menu {
 }
@@ -91,6 +130,11 @@ div.bookmark div.actions {
 div.bookmark div.actions a {
   font-size: 0.9em;
 }
+
+
+
+
+
 
 /* ===== LOGIN ===== */
 
