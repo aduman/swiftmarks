@@ -53,8 +53,10 @@ div#header {
   padding: 10px 0px;
 }
 
-div#header span#logo {
+div#header a#logo {
+  color: #000;
   font-size: 1.75em; 
+  text-decoration: none;
 }
 
 div#header div#navigation {
