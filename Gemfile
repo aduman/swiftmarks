@@ -1,11 +1,5 @@
-source 'http://rubygems.org'
-
-gem 'rails', '3.0.1'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'mysql2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -21,8 +15,6 @@ gem 'mysql2'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
-gem 'authlogic'
-gem 'acts-as-taggable-on'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -30,3 +22,11 @@ gem 'acts-as-taggable-on'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.1'
+gem 'mysql2'
+gem 'authlogic'
+gem 'acts-as-taggable-on'
+gem 'dynamic_form'
