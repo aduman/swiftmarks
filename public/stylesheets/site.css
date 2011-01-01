@@ -124,6 +124,7 @@ a.delete-bookmark-link {
 }
 
 div#bookmarks-list {
+  margin-bottom: 20px;
 }
 
 div.bookmark {
