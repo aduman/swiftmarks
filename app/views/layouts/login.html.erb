@@ -9,11 +9,7 @@
 <body id="login">
 
   <div id="wrapper">
-    <div id="header">
-      <%= link_to "Swiftmarks", root_url, :id => "logo" %>
-    </div>
-
-    <div id="separator"></div>
+    <%= render "shared/header" %>
 
     <div id="content">
       <%= yield %>

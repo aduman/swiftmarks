@@ -9,21 +9,7 @@
 <body>
   
   <div id="wrapper">
-    <div id="header">
-      <%= link_to "Swiftmarks", root_url, :id => "logo" %>
-      
-      <% if current_user %>
-        <div id="navigation">
-          <%= link_to "Bookmarklet", bookmarklet_url %>
-          <span class="pipe">|</span>
-          <%= link_to "Import", import_bookmarks_url %>
-          <span class="pipe">|</span>
-          <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
-        </div>
-      <% end %>
-    </div>
-
-    <div id="separator"></div> 
+    <%= render "shared/header" %>
 
     <div id="sidebar">
       <%= yield :sidebar %>
