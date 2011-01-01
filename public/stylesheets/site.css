@@ -104,9 +104,6 @@ form em {
 
 /* ===== BOOKMARKS ===== */
 
-div#bookmarks-menu {
-}
-
 a#add-bookmark-link {
   color: green;
   text-decoration: none;
@@ -151,6 +148,28 @@ div.bookmark div.actions {
 div.bookmark div.actions a {
   line-height: 1;
   text-decoration: underline;
+}
+
+
+/* ===== TAGS ===== */
+
+ul.tag-list {
+}
+
+ul.tag-list li {
+  line-height: 1.2em;
+}
+
+ul.tag-list li a {
+  text-decoration: none;
+}
+
+ul.tag-list li a:hover {
+  text-decoration: underline;
+}
+
+ul.tag-list li#show-all-tag {
+  margin-top: 10px;
 }
 
 /* ===== LOGIN ===== */
