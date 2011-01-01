@@ -5,8 +5,10 @@ class BookmarksController < ApplicationController
     if (params[:tag])
       @bookmarks = current_user.bookmarks.tagged_with(params[:tag])
     else
-      @bookmarks = current_user.bookmarks.all
+      @bookmarks = current_user.bookmarks
     end
+
+    @bookmarks = @bookmarks.order("id desc")
   end
 
   def new
