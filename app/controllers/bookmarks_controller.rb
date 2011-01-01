@@ -14,8 +14,6 @@ class BookmarksController < ApplicationController
       :title => params[:title],
       :description => params[:description]
     })
-
-    render "_form"
   end
 
   def create
@@ -28,12 +26,11 @@ class BookmarksController < ApplicationController
       redirect_to bookmarks_url
     end
   rescue ActiveRecord::RecordInvalid
-    render "_form"
+    render :action => "new"
   end
 
   def edit
     @bookmark = current_user.bookmarks.find(params[:id])
-    render "_form"
   end
 
   def update
@@ -42,7 +39,7 @@ class BookmarksController < ApplicationController
     @bookmark.save!
     redirect_to bookmarks_url
   rescue ActiveRecord::RecordInvalid
-    render "_form"
+    render :action => "edit"
   end
 
   def destroy
