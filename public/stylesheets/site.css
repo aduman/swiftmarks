@@ -109,6 +109,11 @@ div#bookmarks-menu {
 
 a#add-bookmark-link {
   color: green;
+  text-decoration: none;
+}
+
+a#add-bookmark-link:hover {
+  text-decoration: underline;
 }
 
 a.edit-bookmark-link {
@@ -124,23 +129,29 @@ div#bookmarks-list {
 
 div.bookmark {
   border-top: solid 1px #D3D3D3;
-  margin: 10px 0px;
-  padding: 10px;
+  margin-top: 10px;
+  padding: 10px 10px 5px 10px;
 }
 
 div.bookmark a {
   color: #333;
-  font-size: 1.25em;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+div.bookmark a:hover {
+  text-decoration: underline;
 }
 
 div.bookmark div.actions {
+  font-size: 0.8em;
   margin-top: 5px;
 }
 
 div.bookmark div.actions a {
-  font-size: 0.9em;
+  line-height: 1;
+  text-decoration: underline;
 }
-
 
 /* ===== LOGIN ===== */
 
