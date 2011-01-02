@@ -41,6 +41,19 @@ p {
 }
 
 
+/* ===== JQUERY UI ===== */
+
+.ui-autocomplete {
+  font-size: 0.9em;
+  max-height: 200px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+  /* add padding to account for vertical scrollbar */
+  padding-right: 20px;
+}
+
+
 /* ===== HEADER ===== */
 
 div#wrapper {
