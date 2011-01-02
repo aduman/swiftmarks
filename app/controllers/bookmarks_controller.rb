@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  before_filter :require_user
   before_filter :find_tags
 
   def index
