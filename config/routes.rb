@@ -58,6 +58,8 @@ Swiftmarks::Application.routes.draw do
 
   resource :account, :controller => "users"
   resource :user_session
+
+  resources :tags
   resources :users
   
   resources :bookmarks do
