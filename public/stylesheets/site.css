@@ -89,10 +89,10 @@ div#separator {
 /* ===== SIDEBAR ===== */
 
 div#sidebar {
+  font-size: 0.9em;
   float: left;
   width: 220px
 }
-
 
 /* ===== CONTENT ===== */
 
