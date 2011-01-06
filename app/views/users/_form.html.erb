@@ -1,9 +1,15 @@
-<%= form.label :email %><br />
-<%= form.text_field :email %><br />
-<br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password %><br />
-<br />
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation %><br />
-
+<p>
+  <%= form.label :email %><br />
+  <%= form.text_field :email, :style => "width: 300px;" %>
+  <%= form.error_message_on :email, :prepend_text => "Email " %>
+</p>
+<p>
+  <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+  <%= form.password_field :password, :style => "width: 300px;" %>
+  <%= form.error_message_on :password, :prepend_text => "Password " %>
+</p>
+<p>
+  <%= form.label :password_confirmation %><br />
+  <%= form.password_field :password_confirmation, :style => "width: 300px;" %>
+  <%= form.error_message_on :password_confirmation, :prepend_text => "Password Confirmation" %>
+</p>
