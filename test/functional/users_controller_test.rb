@@ -5,13 +5,14 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:josh)
   end
 
-  test "on GET to :new" do
+  test "new should load user and render page" do
     get :new
+    assert assigns(:user).new_record?
     assert_response :success
     assert_template "new"
   end
 
-  test "on valid POST to :create" do
+  test "create should create a user, set the flash, and redirect to account page on valid POST" do
     post :create, :user => { 
       :email => "johnny@swiftmarks.com", 
       :password => "secret123",
@@ -19,39 +20,39 @@ class UsersControllerTest < ActionController::TestCase
     }
 
     assert_equal "Account registered!", flash[:notice]
+    assert !assigns(:user).new_record?
     assert_redirected_to account_url
   end
 
-  test "on invalid POST to :create" do
+  test "create should render new template on invalid POST" do
     post :create, :user => {}
     assert_template "new"
   end
 
-  test "on GET to :show" do
+  test "show should load user and render page" do
     UserSession.create(@user)
     get :show
+    assert_equal users(:josh), assigns(:user)
     assert_response :success
     assert_template "show"
   end
 
-  test "on GET to :edit" do
+  test "edit should load user and render page" do
     UserSession.create(@user)
     get :edit, :id => @user.id
+    assert_equal users(:josh), assigns(:user)
     assert_response :success
     assert_template "edit"
   end
 
-  test "on valid POST to :update" do
+  test "update should change user, set the flash, and redirect to account page on valid POST" do
     UserSession.create(@user)
     post :update, :id => @user.id, :user => {}
-
-    assigns(:user).errors.each { |e,m| puts "#{e} - #{m}" }
-
     assert_equal "Account updated!", flash[:notice]
     assert_redirected_to account_url
   end
 
-  test "on invalid POST to :update" do
+  test "update should render edit template on invalid POST" do
     UserSession.create(@user)
     post :update, :id => @user.id, :user => { :email => nil }
     assert_template "edit"
