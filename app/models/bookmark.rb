@@ -1,7 +1,13 @@
 class Bookmark < ActiveRecord::Base
   acts_as_taggable
+
   belongs_to :user
+
   validates_presence_of :url, :title, :user_id
+
+  def self.tag_counts(options = {})
+    tag_counts_on(:tags, options) 
+  end
 
   def self.import(data, user_id)
     bookmarks = []
