@@ -65,6 +65,6 @@ class BookmarksController < ApplicationController
   private 
 
   def find_tags
-    @tags = current_user.bookmarks.tag_counts
+    @tags = current_user.bookmarks.tag_counts.sort_by(&:name)
   end
 end
