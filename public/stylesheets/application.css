@@ -170,9 +170,13 @@ div.bookmark a:hover {
   text-decoration: underline;
 }
 
+div.bookmark div.tags {
+  font-size: 0.9em;
+  margin: 3px 0px 7px 0px;
+}
+
 div.bookmark div.actions {
   font-size: 0.8em;
-  margin-top: 5px;
 }
 
 div.bookmark div.actions a {

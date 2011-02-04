@@ -22,6 +22,9 @@
       <div class="title">
         <%= link_to bookmark.title, bookmark.url %>
       </div>
+      <div class="tags weak">
+        <%= bookmark.tag_list %>
+      </div>
       <div class="actions">
         <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
         <span class="pipe">|</span>
