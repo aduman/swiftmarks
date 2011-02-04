@@ -7,14 +7,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body id="login">
-
-  <div id="wrapper">
+  <div id="header-container">
     <%= render "shared/header" %>
+  </div>
 
+  <div id="content-container">
     <div id="content">
       <%= yield %>
     </div>
   </div>
-
 </body>
 </html>

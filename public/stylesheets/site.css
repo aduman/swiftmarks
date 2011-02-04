@@ -56,33 +56,33 @@ p {
 
 /* ===== HEADER ===== */
 
-div#wrapper {
-  margin: 0 auto;
-  width: 960px;
+div#header-container {
+  background-color: #000;
 }
 
 div#header {
-  color: #333;
+  color: #FFF;
+  margin: 0 auto;
   padding: 10px 0px;
+  width: 960px;
 }
 
 div#header a#logo {
-  color: #000;
+  color: #FFF;
   font-size: 1.75em; 
   text-decoration: none;
 }
 
 div#header div#navigation {
+  color: #FFF;
   display: inline;
   float: right;
   font-size: 0.8em;
   margin-top: 7px;
 }
 
-div#separator {
-  background-color: #333;
-  height: 3px; 
-  margin-bottom: 20px;
+div#header div#navigation a {
+  color: #FFF;
 }
 
 
@@ -95,6 +95,11 @@ div#sidebar {
 }
 
 /* ===== CONTENT ===== */
+
+div#content-container {
+  margin: 20px auto;
+  width: 960px;
+}
 
 div#content {
   margin: 10px 0px 0px 240px;

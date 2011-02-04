@@ -9,10 +9,11 @@
   <%= yield :head %>
 </head>
 <body>
-  
-  <div id="wrapper">
+  <div id="header-container">
     <%= render "shared/header" %>
-
+  </div>
+  
+  <div id="content-container">
     <div id="sidebar">
       <%= yield :sidebar %>
     </div>
@@ -21,6 +22,5 @@
       <%= yield %>
     </div>
   </div>
-
 </body>
 </html>
