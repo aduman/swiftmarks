@@ -5,6 +5,8 @@
     <% if current_user %>
       <span id="welcome-message"><%= current_user.email %></span>
       <span class="pipe">|</span>
+      <%= link_to "Account", account_url %>
+      <span class="pipe">|</span>
       <%= link_to "Import", import_bookmarks_url %>
       <span class="pipe">|</span>
       <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
