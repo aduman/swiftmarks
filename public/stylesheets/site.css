@@ -174,9 +174,6 @@ div.bookmark div.actions a {
 
 /* ===== TAGS ===== */
 
-ul.tag-list {
-}
-
 ul.tag-list li {
   line-height: 1.2em;
 }
@@ -195,20 +192,17 @@ ul.tag-list li#show-all-tag {
 
 /* ===== LOGIN ===== */
 
-body#login {
-}
-
-body#login div#content {
+body#no-sidebar div#content {
   margin: 10px;
 }
 
-body#login div#login-form-container {
+body#no-sidebar div#login-form-container {
   border: solid 1px #D3D3D3;
   margin: 0 auto;
   padding: 20px;
   width: 400px;
 }
 
-body#login div#login-form-container h2 {
+body#no-sidebar div#login-form-container h2 {
   margin-bottom: 20px; 
 }
