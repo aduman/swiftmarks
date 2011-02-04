@@ -1,4 +1,4 @@
-/* ===== COMMON ===== */
+/* ===== GLOBAL ===== */
 
 body {
   font-family: Arial, sans-serif;
@@ -111,6 +111,14 @@ div#content {
 
 form em {
   color: red;
+}
+
+input[type=text],
+input[type=password],
+textarea {
+  border: solid 1px #D3D3D3;
+  font-size: 1em;
+  padding: 5px;
 }
 
 .field_with_errors {
