@@ -1,7 +1,8 @@
-<h1>Create Your Swiftmarks Account</h1>
+<div class="form-container">
+  <h2>Create Your Swiftmarks Account</h2>
 
-<%= form_for @user, :url => account_path do |f| %>
-  <%= render :partial => "form", :object => f %>
-  <%= f.submit "Create My Account" %>
-<% end %>
-
+  <%= form_for @user, :url => account_path do |f| %>
+    <%= render :partial => "form", :object => f %>
+    <%= f.submit "Create My Account" %>
+  <% end %>
+</div>

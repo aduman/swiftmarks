@@ -94,6 +94,7 @@ div#sidebar {
   width: 220px
 }
 
+
 /* ===== CONTENT ===== */
 
 div#content-container {
@@ -190,19 +191,20 @@ ul.tag-list li#show-all-tag {
   margin-top: 10px;
 }
 
+
 /* ===== LOGIN ===== */
 
 body#no-sidebar div#content {
   margin: 10px;
 }
 
-body#no-sidebar div#login-form-container {
+body#no-sidebar div.form-container {
   border: solid 1px #D3D3D3;
   margin: 0 auto;
   padding: 20px;
   width: 400px;
 }
 
-body#no-sidebar div#login-form-container h2 {
+body#no-sidebar div.form-container h2 {
   margin-bottom: 20px; 
 }
