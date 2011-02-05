@@ -91,7 +91,7 @@ div#header div#navigation a {
 div#sidebar {
   font-size: 0.9em;
   float: left;
-  width: 220px
+  width: 180px
 }
 
 
@@ -103,7 +103,7 @@ div#content-container {
 }
 
 div#content {
-  margin: 10px 0px 0px 240px;
+  margin: 10px 0px 0px 200px;
 }
 
 
