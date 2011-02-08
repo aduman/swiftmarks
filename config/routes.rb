@@ -59,6 +59,7 @@ Swiftmarks::Application.routes.draw do
   resource :account, :controller => "users"
   resource :user_session
 
+  resources :pages
   resources :tags
   resources :users
   
@@ -69,5 +70,5 @@ Swiftmarks::Application.routes.draw do
     end
   end
 
-  root :to => "user_sessions#new"
+  root :to => "pages#index"
 end
