@@ -1,18 +1,22 @@
 <div id="header">
-  <%= link_to "Swiftmarks", root_url, :id => "logo" %>
+  <h1 id="logo">
+    <%= link_to "Swiftmarks", root_path %>
+  </h1>
   
   <div id="navigation">
     <% if current_user %>
       <span id="welcome-message"><%= current_user.email %></span>
       <span class="pipe">|</span>
-      <%= link_to "Account", account_url %>
+      <%= link_to "Account", account_path %>
       <span class="pipe">|</span>
-      <%= link_to "Import", import_bookmarks_url %>
+      <%= link_to "Import", import_bookmarks_path %>
       <span class="pipe">|</span>
       <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
     <% else %>
-      <span id="welcome-message">Not a member?</span>
-      <%= link_to "Create an account", new_account_url %>
+      <%= link_to "Create an Account", new_account_path %> or
+      <%= link_to "Sign In", new_user_session_path %>
     <% end %>
   </div>
+
+  <div class="clear"></div>
 </div>
