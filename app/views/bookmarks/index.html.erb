@@ -21,6 +21,7 @@
     <div class="bookmark">
       <div class="title">
         <%= link_to bookmark.title, bookmark.url %>
+        <span class="small"><%= bookmark_url_host(bookmark) %></span>
       </div>
       <div class="tags weak">
         <%= bookmark.cached_tag_list %>
