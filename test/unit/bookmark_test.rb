@@ -15,4 +15,32 @@ class BookmarkTest < ActiveSupport::TestCase
     bookmark = Bookmark.create
     assert bookmark.errors.has_key?(:user_id)
   end
+
+  test "should validate format of :url" do
+    invalid_urls = [
+      "ftp://example.com",
+      "www.example.com",
+      "example.com"
+    ]
+
+    valid_urls = [
+      "http://example",
+      "http://www.example.com",
+      "https://www.example.com",
+      "http://example.com?foo=a&bar=b",
+      "http://example.com?foo=a%20b"
+    ]
+
+    invalid_urls.each do |url|
+      b = Bookmark.new(:url => url)
+      b.valid?
+      assert b.errors.has_key?(:url), "#{url} should be invalid"
+    end
+
+    valid_urls.each do |url|
+      b = Bookmark.new(:url => url)
+      b.valid?
+      assert !b.errors.has_key?(:url), "#{url} should be valid"
+    end
+  end
 end

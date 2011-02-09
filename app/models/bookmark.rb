@@ -4,6 +4,7 @@ class Bookmark < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :url, :title, :user_id
+  validates_format_of :url, :with => URI.regexp(%w(http https))
 
   def self.tag_counts(options = {})
     tag_counts_on(:tags, options) 
