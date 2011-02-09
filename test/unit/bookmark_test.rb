@@ -43,4 +43,14 @@ class BookmarkTest < ActiveSupport::TestCase
       assert !b.errors.has_key?(:url), "#{url} should be valid"
     end
   end
+
+  test "should have a :uri with a valid :url" do
+    b = Bookmark.new(:url => "http://www.example.com")
+    assert b.uri.is_a?(URI)
+  end
+
+  test "should not have a :uri with an invalid :url" do
+    b = Bookmark.new
+    assert_nil b.uri
+  end
 end

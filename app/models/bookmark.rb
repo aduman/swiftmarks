@@ -1,10 +1,12 @@
 class Bookmark < ActiveRecord::Base
+  URI_SCHEMES = %w(http https)
+
   acts_as_taggable
 
   belongs_to :user
 
   validates_presence_of :url, :title, :user_id
-  validates_format_of :url, :with => URI.regexp(%w(http https))
+  validates_format_of :url, :with => URI.regexp(URI_SCHEMES)
 
   def self.tag_counts(options = {})
     tag_counts_on(:tags, options) 
@@ -26,6 +28,12 @@ class Bookmark < ActiveRecord::Base
 
     if !bookmarks.empty?
       create!(bookmarks)
+    end
+  end
+
+  def uri
+    if url.to_s.match(URI.regexp(URI_SCHEMES))
+      URI.parse(url)
     end
   end
 end
