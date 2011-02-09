@@ -1,5 +1,4 @@
 - search bookmarks by title
 - filter bookmarks by "Untagged"
 - add infinite scroll to bookmarks index page
-- display a each bookmark's domain index page
 - rewrite bookmark import functionality
