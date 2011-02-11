@@ -1,4 +1,30 @@
-<% content_for(:sidebar) do %>
+<div class="grid_9">
+  <div id="bookmarks-menu">
+    <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
+  </div>
+
+  <div id="bookmarks-list">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="bookmark">
+        <div class="title">
+          <%= link_to bookmark.title, bookmark.url %>
+        </div>
+        <div class="grid_7 alpha tags">
+          <%= bookmark.cached_tag_list.blank? ? "Untagged" : bookmark.cached_tag_list %> |
+          <%= bookmark_url_host(bookmark) %>
+        </div>
+        <div class="grid_2 omega actions">
+          <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
+          <span class="pipe">|</span>
+          <%= link_to "Delete", bookmark_url(bookmark), :method => :delete, :class => "delete-bookmark-link" %>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="sidebar" class="grid_3">
   <h2>Tags</h2>
 
   <ul class="tag-list">
@@ -6,31 +32,8 @@
       <li><%= link_to "#{tag.name} (#{tag.count})", bookmarks_url(:tag => tag.name) %></li>
     <% end %>
 
-    <li id="show-all-tag">
+    <li>
       <%= link_to "Show All", bookmarks_url %>
     </li>
   </ul>
-<% end %>
-
-<div id="bookmarks-menu">
-  <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
-</div>
-
-<div id="bookmarks-list">
-  <% @bookmarks.each do |bookmark| %>
-    <div class="bookmark">
-      <div class="title">
-        <%= link_to bookmark.title, bookmark.url %>
-        <span class="small"><%= bookmark_url_host(bookmark) %></span>
-      </div>
-      <div class="tags weak">
-        <%= bookmark.cached_tag_list %>
-      </div>
-      <div class="actions">
-        <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
-        <span class="pipe">|</span>
-        <%= link_to "Delete", bookmark_url(bookmark), :method => :delete, :class => "delete-bookmark-link" %>
-      </div>
-    </div>
-  <% end %>
 </div>

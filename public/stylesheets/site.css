@@ -1,63 +1,28 @@
-/* ===== GLOBAL ===== */
-
 body { 
   color: #666;
-  font-family: Arial, sans-serif; 
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
+  font: 16px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 a {
   color: #000;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   color: #000;
   font-weight: normal;
-  margin-bottom: 0.35em;
 }
 
-h1 {
-  font-size: 1.3em;
-}
-
-h2 {
-  font-size: 1.2em;
-}
-
-h3 {
-  font-size: 1.1em;
-}
-
-p { 
-  line-height: 1.5;
-  margin-top: 0px;
-}
-
-.clear {
-  clear: both;
-}
-
-.small {
-  font-size: 0.8em;
+.container_12 {
+  overflow: hidden;
 }
 
 
-/*------------------------------
-
-= BASE
-
-------------------------------*/
-
-/* ===== BASE: HEADER ===== */
+/* ===== HEADER ===== */
 
 #header h1#logo {
-  float: left;
-  font-size: 1.5em;
+  font-size: 26px;
   font-weight: bold;
-  margin: 0;
-  padding: 0;
+  margin: 10px 0px;
 }
 
 #header h1#logo a {
@@ -65,9 +30,9 @@ p {
 }
 
 #header div#navigation {
-  float: right;
-  font-size: 0.8em;
-  margin-top: 0.5em;
+  font-size: 13px;
+  padding: 20px 0px;
+  text-align: right;
 }
 
 #header div#navigation a {
@@ -75,7 +40,7 @@ p {
 }
 
 
-/* ===== BASE: FORMS ===== */
+/* ===== FORMS ===== */
 
 .field_with_errors {
   display: inline;
@@ -84,10 +49,6 @@ p {
 .formError {
   color: #C00;
   font-size: 0.75em;
-}
-
-div.form-container {
-  width: 75%;
 }
 
 div.form-container h2 {
@@ -109,201 +70,144 @@ div.form-container form textarea {
 }
 
 
-/*------------------------------
-
-= APPlICATION LAYOUT
-
-------------------------------*/
-
-/* ===== APPLICATION: HEADER ===== */
-
-#header {
-  margin: 1em auto;
-  width: 600px;
-}
-
-
-/* ===== APPLICATION: STATEMENT ===== */
-
-#statement-container {
-  background-color: #C00;
-  padding: 2em;
-}
+/* ===== CONTENT: Home Page ===== */
 
 #statement {
+  background-color: #C00;
+}
+
+#statement p {
   color: #FFF;
-  font-size: 1.5em;
+  font-size: 24px;
   margin: 0 auto;
+  padding: 40px;
   width: 600px;
 }
 
+#feature-title {
+  margin: 20px 10px;
+}
 
-/* ===== APPLICATION: CONTENT ===== */
-
-#content {
-  margin: 0 auto;
-  width: 600px;
+.feature {
+  background-color: #EEE;
+  border: solid 1px #DDD;
+  font-size: 14px;
+  height: 225px;
+  padding: 15px;
 }
 
 
-/* ===== SIGN IN / CREATE ACCOUNT FORM ===== */
+/* ===== CONTENT: Sign In / Create Account Form ===== */
 
-.user-account-form,
-.sign-in-form {
+#user-account-form,
+#sign-in-form {
   background-color: #C00;
   color: #FFF;
-  margin: 0 auto;
   padding: 2em;
-  width: 300px;
 }
 
-.user-account-form h2,
-.sign-in-form h2 {
+#user-account-form h2,
+#sign-in-form h2 {
   color: #FFF;
 }
 
-.user-account-form .formError,
-.sign-in-form .formError {
+#user-account-form .formError,
+#sign-in-form .formError {
   color: #FFF;
   font-style: italic;
 }
 
-.user-account-form input,
-.sign-in-form input {
+#user-account-form input,
+#sign-in-form input {
   font-size: 1em;
   padding: 0.25em; 
 }
 
-.user-account-form h2,
-.sign-in-form h2 {
+#user-account-form h2,
+#sign-in-form h2 {
   margin-top: 0;
 }
 
+/* ===== CONTENT: Bookmarks Index ===== */
 
-/*------------------------------
-
-= BOOKMARKS LAYOUT
-
-------------------------------*/
-
-/* ===== WRAPPER ===== */
-
-body#bookmarks #wrapper {
-  margin: 0 auto;
-  width: 960px;
+#bookmarks-menu {
+  font-size: 18px;
 }
 
-
-/* ===== BOOKMARKS: HEADER ===== */
-
-body#bookmarks #header {
-  width: auto !important;
-}
-
-
-/* ===== BOOKMARKS: SIDEBAR ===== */
-
-body#bookmarks #sidebar {
-  float: right;
-  width: 200px;
-}
-
-body#bookmarks #sidebar h2 {
-  border-bottom: solid 1px #DDD;
-  margin-top: 0;
-  padding-bottom: 0.5em;
-}
-
-body#bookmarks #sidebar p, 
-body#bookmarks #sidebar ul {
-  font-size: 0.9em;
-}
-
-body#bookmarks #sidebar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-body#bookmarks #sidebar ul li {
-  line-height: 1.25;
-  margin: 0;
-  padding: 0;
-}
-
-body#bookmarks #sidebar ul li a {
-  color: #666;
-  text-decoration: none;
-}
-
-body#bookmarks #sidebar ul li a:hover {
-  text-decoration: underline;
-}
-
-
-/* ===== BOOKMARKS: CONTENT ===== */
-
-body#bookmarks #content {
-  margin: 0 !important;
-  width: 700px;
-}
-
-
-/* ===== BOOKMARKS: BOOKMARKS-MENU ===== */
-
-body#bookmarks #bookmarks-menu {
-  font-size: 1.2em;
-  margin-bottom: 0.5em;
-}
-
-body#bookmarks #bookmarks-menu a {
+#bookmarks-menu a {
   color: green;
   text-decoration: none;
 }
 
-body#bookmarks #bookmarks-menu a:hover {
+#bookmarks-menu a:hover {
   text-decoration: underline;
 }
 
-
-/* ===== BOOKMARKS: BOOKMARKS-LIST ===== */
-
-body#bookmarks #bookmarks-list {
-  margin-bottom: 1em;
-}
-
-body#bookmarks #bookmarks-list .bookmark {
+#bookmarks-list .bookmark {
   border-top: solid 1px #DDD;
-  padding: 1em 0em;
+  padding: 10px 0px;
 }
 
-body#bookmarks #bookmarks-list .title {
-  font-size: 1em;
+#bookmarks-list .title {
+  margin-bottom: 5px;
 }
 
-body#bookmarks #bookmarks-list .title a {
+#bookmarks-list .title a {
+  line-height: 1;
   text-decoration: none;
 }
 
-body#bookmarks #bookmarks-list .title a:hover {
+#bookmarks-list .title a:hover {
   text-decoration: underline;
 }
 
-body#bookmarks #bookmarks-list .tags {
-  margin: 0.5em 0em 0.5em 0em;
-  font-size: 0.75em;
+#bookmarks-list .bookmark .host,
+#bookmarks-list .bookmark .tags,
+#bookmarks-list .bookmark .actions {
+  font-size: 13px;
 }
 
-body#bookmarks #bookmarks-list .actions {
-  font-size: 0.75em;
+#bookmarks-list .actions {
+  text-align: right;
 }
 
-body#bookmarks #bookmarks-list .actions .edit-bookmark-link {
+#bookmarks-list .actions .edit-bookmark-link {
   color: #666;
 }
 
-body#bookmarks #bookmarks-list .actions .delete-bookmark-link {
+#bookmarks-list .actions .delete-bookmark-link {
   color: #C00;
 }
 
 
+/* ===== CONTENT: Bookmarks Sidebar ===== */
+
+#sidebar {
+  font-size: 14px;
+}
+
+#sidebar h2 {
+  border-bottom: solid 1px #DDD;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0px 5px;
+}
+
+#sidebar ul li {
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+}
+
+#sidebar ul li a {
+  color: #666;
+  text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+  text-decoration: underline;
+}

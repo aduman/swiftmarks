@@ -52,24 +52,6 @@
   </script>
 <% end %>
 
-<% content_for :sidebar do %>
-  <h2>Bookmarklet</h2>
-
-  <p class="weak">
-    Drag the button below to your bookmarks
-    toolbar and saving bookmarks will become
-    much easier.
-  </p>
-  <p class="weak">
-    The next time you're on a web page that you
-    would like to bookmark, simply click this link
-    and this form will be filled out automatically!
-  </p>
-  <p>
-    <%= link_to "Add Bookmark", bookmarklet_url, :class => "bookmarklet" %>
-  </p>
-<% end %>
-
 <%= form_for @bookmark do |f| %>
   <p>
     <%= f.label :url, "URL" %><em>*</em><br/>
