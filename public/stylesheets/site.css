@@ -97,37 +97,6 @@ div.form-container form textarea {
 }
 
 
-/* ===== CONTENT: Sign In / Create Account Form ===== */
-
-#user-account-form,
-#sign-in-form {
-  background-color: #C00;
-  color: #FFF;
-  padding: 2em;
-}
-
-#user-account-form h2,
-#sign-in-form h2 {
-  color: #FFF;
-}
-
-#user-account-form .formError,
-#sign-in-form .formError {
-  color: #FFF;
-  font-style: italic;
-}
-
-#user-account-form input,
-#sign-in-form input {
-  font-size: 1em;
-  padding: 0.25em; 
-}
-
-#user-account-form h2,
-#sign-in-form h2 {
-  margin-top: 0;
-}
-
 /* ===== CONTENT: Bookmarks Index ===== */
 
 #bookmarks-menu {
