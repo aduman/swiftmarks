@@ -8,6 +8,12 @@ class Bookmark < ActiveRecord::Base
   validates_presence_of :url, :title, :user_id
   validates_format_of :url, :with => URI.regexp(URI_SCHEMES)
 
+  cattr_accessor :per_page
+
+  def self.per_page
+    @@per_page ||= 50
+  end
+
   def self.tag_counts(options = {})
     tag_counts_on(:tags, options) 
   end
