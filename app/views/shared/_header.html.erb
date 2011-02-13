@@ -9,7 +9,7 @@
     <% if current_user %>
       <span id="welcome-message"><%= current_user.email %></span>
       <span class="pipe">|</span>
-      <%= link_to "Account", account_path %>
+      <%= link_to "Account", edit_account_path %>
       <span class="pipe">|</span>
       <%= link_to "Import", import_bookmarks_path %>
       <span class="pipe">|</span>

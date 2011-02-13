@@ -21,20 +21,12 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_equal "Account registered!", flash[:notice]
     assert !assigns(:user).new_record?
-    assert_redirected_to account_url
+    assert_redirected_to bookmarks_url
   end
 
   test "create should render new template on invalid POST" do
     post :create, :user => {}
     assert_template "new"
-  end
-
-  test "show should load user and render page" do
-    UserSession.create(@user)
-    get :show
-    assert_equal users(:josh), assigns(:user)
-    assert_response :success
-    assert_template "show"
   end
 
   test "edit should load user and render page" do
@@ -49,7 +41,7 @@ class UsersControllerTest < ActionController::TestCase
     UserSession.create(@user)
     post :update, :id => @user.id, :user => {}
     assert_equal "Account updated!", flash[:notice]
-    assert_redirected_to account_url
+    assert_redirected_to edit_account_url
   end
 
   test "update should render edit template on invalid POST" do
