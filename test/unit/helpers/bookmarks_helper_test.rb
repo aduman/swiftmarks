@@ -10,4 +10,16 @@ class BookmarksHelperTest < ActionView::TestCase
     bookmark = Bookmark.new
     assert "", bookmark_url_host(bookmark)
   end
+
+  test "next_page_link should not be blank with next page" do
+    @bookmarks = Bookmark.limit(2).paginate(:page => 1, :per_page => 1)
+    link = next_page_link(hash_for_bookmarks_url(:page => 1))
+    assert !link.blank?
+  end
+
+  test "next_page_link should be blank without next page" do
+    @bookmarks = Bookmark.limit(2).paginate(:page => 1)
+    link = next_page_link(hash_for_bookmarks_url(:page => 1))
+    assert link.blank?
+  end
 end
