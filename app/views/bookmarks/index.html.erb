@@ -4,23 +4,11 @@
   </div>
 
   <div id="bookmarks-list">
-    <% @bookmarks.each do |bookmark| %>
-      <div class="bookmark">
-        <div class="title">
-          <%= link_to bookmark.title, bookmark.url %>
-        </div>
-        <div class="grid_7 alpha tags">
-          <%= bookmark.cached_tag_list.blank? ? "Untagged" : bookmark.cached_tag_list %> |
-          <%= bookmark_url_host(bookmark) %>
-        </div>
-        <div class="grid_2 omega actions">
-          <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
-          <span class="pipe">|</span>
-          <%= link_to "Delete", bookmark_url(bookmark), :method => :delete, :class => "delete-bookmark-link" %>
-        </div>
-        <div class="clear"></div>
-      </div>
-    <% end %>
+    <%= render @bookmarks %>
+  </div>
+
+  <div id="pagination">
+    <%= next_page_link(params) %>
   </div>
 </div>
 

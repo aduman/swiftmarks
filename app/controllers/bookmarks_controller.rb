@@ -3,10 +3,21 @@ class BookmarksController < ApplicationController
   before_filter :find_tags
 
   def index
-    tag = params[:tag]
-    @bookmarks = current_user.bookmarks
-    @bookmarks = @bookmarks.tagged_with(tag) unless tag.blank?
-    @bookmarks = @bookmarks.order("id desc")
+    @bookmarks = current_user.bookmarks.order("id desc")
+
+    if params[:tag]
+      @bookmarks = @bookmarks.tagged_with(params[:tag])
+    end
+
+    @bookmarks = @bookmarks.paginate(
+      :page => params[:page], 
+      :per_page => Bookmark.per_page
+    )
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

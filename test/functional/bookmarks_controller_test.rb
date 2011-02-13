@@ -7,9 +7,10 @@ class BookmarksControllerTest < ActionController::TestCase
     UserSession.create(@user)
   end
 
-  test "index should return all bookmarks for current user" do
+  test "index should return a paged set of bookmarks for current user" do
+    Bookmark.per_page = 1
     get :index
-    assert_equal @user.bookmarks.all.count, assigns(:bookmarks).count
+    assert_equal 1, assigns(:bookmarks).count
     assert_response :success
     assert_template "index"
   end

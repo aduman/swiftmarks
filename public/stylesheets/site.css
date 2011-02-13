@@ -143,6 +143,10 @@ div.form-container form textarea {
   text-decoration: underline;
 }
 
+#bookmarks-list {
+  margin-bottom: 20px;
+}
+
 #bookmarks-list .bookmark {
   border-top: solid 1px #DDD;
   padding: 10px 0px;
@@ -177,6 +181,29 @@ div.form-container form textarea {
 
 #bookmarks-list .actions .delete-bookmark-link {
   color: #C00;
+}
+
+
+/* ===== CONTENT: Bookmarks Pagination ===== */
+
+#pagination {
+  margin-bottom: 20px;
+}
+
+#pagination a {
+  border: solid 1px #DDD;
+  color: #666;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  width: auto;
+}
+
+#pagination a:hover {
+  border: solid 1px #000;
+  color: #000;
 }
 
 

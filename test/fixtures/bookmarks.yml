@@ -9,3 +9,9 @@ google:
   title: Google
   description: Google Search Engine
   user: josh
+
+amazon:
+  url: "http://www.amazon.com"
+  title: Amazon
+  description: Online Shopping
+  user: josh
