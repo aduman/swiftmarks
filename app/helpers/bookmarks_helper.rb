@@ -1,9 +1,7 @@
 module BookmarksHelper
-  def bookmark_url_host(bookmark)
+  def formatted_host(bookmark)
     if bookmark && bookmark.host
       "(#{bookmark.host})"
-    else
-      ""
     end
   end
 

@@ -4,7 +4,7 @@
   </div>
   <div class="grid_7 alpha tags">
     <%= bookmark.cached_tag_list.blank? ? "Untagged" : bookmark.cached_tag_list %> |
-    <%= bookmark_url_host(bookmark) %>
+    <%= formatted_host(bookmark) %>
   </div>
   <div class="grid_2 omega actions">
     <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
