@@ -1,7 +1,7 @@
 module BookmarksHelper
   def bookmark_url_host(bookmark)
-    if bookmark && bookmark.uri
-      "(#{bookmark.uri.host})"
+    if bookmark && bookmark.host
+      "(#{bookmark.host})"
     else
       ""
     end

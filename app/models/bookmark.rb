@@ -37,9 +37,7 @@ class Bookmark < ActiveRecord::Base
     end
   end
 
-  def uri
-    if url.to_s.match(URI.regexp(URI_SCHEMES))
-      URI.parse(url)
-    end
+  def host
+    URI.parse(url).host rescue nil
   end
 end

@@ -48,13 +48,13 @@ class BookmarkTest < ActiveSupport::TestCase
     end
   end
 
-  test "should have a :uri with a valid :url" do
+  test "should have a :host with a valid :url" do
     b = Bookmark.new(:url => "http://www.example.com")
-    assert b.uri.is_a?(URI)
+    assert_equal "www.example.com", b.host
   end
 
-  test "should not have a :uri with an invalid :url" do
+  test "should not have a :host with an invalid :url" do
     b = Bookmark.new
-    assert_nil b.uri
+    assert_nil b.host
   end
 end
