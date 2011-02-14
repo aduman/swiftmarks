@@ -1,19 +1,9 @@
 class BookmarksController < ApplicationController
   before_filter :require_user
-  before_filter :find_tags
+  before_filter :find_bookmarks, :find_tags, :only => :index
+  before_filter :find_bookmark, :only => %w(edit update destroy)
 
   def index
-    @bookmarks = current_user.bookmarks.order("id desc")
-
-    if params[:tag]
-      @bookmarks = @bookmarks.tagged_with(params[:tag])
-    end
-
-    @bookmarks = @bookmarks.paginate(
-      :page => params[:page], 
-      :per_page => Bookmark.per_page
-    )
-
     respond_to do |format|
       format.html
       format.js
@@ -42,11 +32,9 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-    @bookmark = current_user.bookmarks.find(params[:id])
   end
 
   def update
-    @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.attributes = params[:bookmark]
     @bookmark.save!
     redirect_to bookmarks_url
@@ -55,7 +43,6 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.delete
     redirect_to bookmarks_url
   end
@@ -74,6 +61,23 @@ class BookmarksController < ApplicationController
   end
 
   private 
+
+  def find_bookmarks
+    @bookmarks = current_user.bookmarks.order("id desc")
+
+    if params[:tag]
+      @bookmarks = @bookmarks.tagged_with(params[:tag])
+    end
+
+    @bookmarks = @bookmarks.paginate(
+      :page => params[:page], 
+      :per_page => Bookmark.per_page
+    )
+  end
+
+  def find_bookmark
+    @bookmark = current_user.bookmarks.find(params[:id])
+  end
 
   def find_tags
     @tags = current_user.bookmarks.tag_counts.sort_by(&:name)

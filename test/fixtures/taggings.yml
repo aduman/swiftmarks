@@ -1,0 +1,11 @@
+google_search:
+  tag_id: 1
+  taggable_id: <%= Fixtures.identify(:google) %>
+  taggable_type: Bookmark
+  context: tags
+
+amazon_shopping:
+  tag_id: 2
+  taggable_id: <%= Fixtures.identify(:amazon) %>
+  taggable_type: Bookmark
+  context: tags
