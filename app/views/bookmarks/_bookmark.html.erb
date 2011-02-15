@@ -3,8 +3,7 @@
     <%= link_to bookmark.title, bookmark.url %>
   </div>
   <div class="grid_7 alpha tags">
-    <%= bookmark.cached_tag_list.blank? ? "Untagged" : bookmark.cached_tag_list %> |
-    <%= formatted_host(bookmark) %>
+    <%= tag_list_for(bookmark) %> | <%= hostname_for(bookmark) %>
   </div>
   <div class="grid_2 omega actions">
     <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>

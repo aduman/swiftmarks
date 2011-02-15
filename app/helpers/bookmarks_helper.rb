@@ -1,5 +1,13 @@
 module BookmarksHelper
-  def formatted_host(bookmark)
+  def tag_list_for(bookmark)
+    if bookmark.cached_tag_list.blank?
+      "Untagged"
+    else
+      bookmark.cached_tag_list
+    end
+  end
+
+  def hostname_for(bookmark)
     if bookmark && bookmark.host
       "(#{bookmark.host})"
     end

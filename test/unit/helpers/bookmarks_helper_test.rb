@@ -1,14 +1,24 @@
 require 'test_helper'
 
 class BookmarksHelperTest < ActionView::TestCase
-  test "formatted_host should return a formatted host for a bookmark with a host" do
-    bookmark = Bookmark.new(:url => "http://www.example.com")
-    assert "(www.example.com)", formatted_host(bookmark)
+  test "tag_list_for should return 'Untagged' for a bookmark without tags" do
+    bookmark = Bookmark.new
+    assert_equal "Untagged", tag_list_for(bookmark)
   end
 
-  test "formatted_host should return nil for a nil bookmark or host" do
+  test "tag_list_for should return a tag list for a bookmark with tags" do
+    bookmark = Bookmark.new(:cached_tag_list => "search, shopping")
+    assert_equal "search, shopping", tag_list_for(bookmark)
+  end
+
+  test "hostname_for should return a bookmark's hostname when present" do
+    bookmark = Bookmark.new(:url => "http://www.example.com")
+    assert "(www.example.com)", hostname_for(bookmark)
+  end
+
+  test "hostname_for should return nil for a bookmark without a host" do
     bookmark = Bookmark.new
-    assert_nil formatted_host(bookmark)
+    assert_nil hostname_for(bookmark)
   end
 
   test "link_to_next_page should not be blank when next page exists" do
