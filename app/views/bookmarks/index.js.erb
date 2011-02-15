@@ -1,2 +1,2 @@
 $("#bookmarks-list").append("<%= escape_javascript(render(@bookmarks)) %>");
-$("#pagination").html("<%= escape_javascript(next_page_link(params)) %>");
+$("#pagination").html("<%= escape_javascript(link_to_next_page) %>");

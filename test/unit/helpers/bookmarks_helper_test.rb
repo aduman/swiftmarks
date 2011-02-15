@@ -11,15 +11,17 @@ class BookmarksHelperTest < ActionView::TestCase
     assert_nil formatted_host(bookmark)
   end
 
-  test "next_page_link should not be blank with next page" do
-    @bookmarks = Bookmark.limit(2).paginate(:page => 1, :per_page => 1)
-    link = next_page_link(hash_for_bookmarks_url(:page => 1))
-    assert !link.blank?
+  test "link_to_next_page should not be blank when next page exists" do
+    bookmarks = Bookmark.all.paginate(:page => 1, :per_page => 1)
+    controller.params = hash_for_bookmarks_url
+    view.instance_variable_set(:@bookmarks, bookmarks)
+    assert_match bookmarks_url(:page => 2), view.link_to_next_page
   end
 
-  test "next_page_link should be blank without next page" do
-    @bookmarks = Bookmark.limit(2).paginate(:page => 1)
-    link = next_page_link(hash_for_bookmarks_url(:page => 1))
-    assert link.blank?
+  test "link_to_next_page should be blank when next page does not exist" do
+    bookmarks = Bookmark.all.paginate(:page => 1)
+    controller.params = hash_for_bookmarks_url
+    view.instance_variable_set(:@bookmarks, bookmarks)
+    assert view.link_to_next_page.blank?
   end
 end
