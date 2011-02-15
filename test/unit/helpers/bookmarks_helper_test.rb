@@ -11,6 +11,15 @@ class BookmarksHelperTest < ActionView::TestCase
     assert_equal "search, shopping", tag_list_for(bookmark)
   end
 
+  test "tag_name_with_count_for should return a name and count for a tag" do
+    tag = Bookmark.tag_counts.first
+    assert_equal "search (1)", tag_name_with_count_for(tag)
+  end
+
+  test "tag_name_with_count_for should return nil without a tag" do
+    assert_nil tag_name_with_count_for(nil)
+  end
+
   test "hostname_for should return a bookmark's hostname when present" do
     bookmark = Bookmark.new(:url => "http://www.example.com")
     assert "(www.example.com)", hostname_for(bookmark)

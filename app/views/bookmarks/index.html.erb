@@ -17,7 +17,7 @@
 
   <ul class="tag-list">
     <% @tags.each do |tag| %>
-      <li><%= link_to "#{tag.name} (#{tag.count})", bookmarks_url(:tag => tag.name) %></li>
+      <li><%= link_to tag_name_with_count_for(tag), bookmarks_url(:tag => tag.name) %></li>
     <% end %>
 
     <li>

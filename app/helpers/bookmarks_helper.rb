@@ -7,6 +7,12 @@ module BookmarksHelper
     end
   end
 
+  def tag_name_with_count_for(tag)
+    if tag
+      "#{tag.name} (#{tag.count})"
+    end
+  end
+
   def hostname_for(bookmark)
     if bookmark && bookmark.host
       "(#{bookmark.host})"
