@@ -1,11 +1,3 @@
-<% content_for(:head) do %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      Swiftmarks.placeholder($("#search"));
-    });
-  </script>
-<% end %>
-
 <div class="grid_9">
   <div id="bookmarks-menu">
     <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
