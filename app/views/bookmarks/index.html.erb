@@ -24,7 +24,7 @@
   <h2>Search</h2>
   <div class="form-container">
     <%= form_tag bookmarks_url, :method => :get, :remote => true, "data-type" => "script" do %>
-      <%= text_field_tag "search", params[:search], :placeholder_test => "Search by title or tag..." %>
+      <%= text_field_tag "search", params[:search], :placeholder => "Search by title or tag..." %>
     <% end %>
   </div>
 
