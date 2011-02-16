@@ -8,10 +8,12 @@ google:
   url: "http://www.google.com"
   title: Google
   description: Google Search Engine
+  cached_tag_list: search
   user: josh
 
 amazon:
   url: "http://www.amazon.com"
   title: Amazon
   description: Online Shopping
+  cached_tag_list: shopping
   user: josh

@@ -14,6 +14,14 @@ class Bookmark < ActiveRecord::Base
     @@per_page ||= 50
   end
 
+  def self.search(term)
+    if term.blank?
+      scoped
+    else
+      where("title LIKE :term OR cached_tag_list LIKE :term", :term => "%#{term}%")
+    end
+  end
+
   def self.tag_counts(options = {})
     tag_counts_on(:tags, options) 
   end
