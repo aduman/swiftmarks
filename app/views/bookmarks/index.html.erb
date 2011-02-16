@@ -1,3 +1,11 @@
+<% content_for(:head) do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      Swiftmarks.placeholder($("#search"));
+    });
+  </script>
+<% end %>
+
 <div class="grid_9">
   <div id="bookmarks-menu">
     <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
@@ -16,7 +24,7 @@
   <h2>Search</h2>
   <div class="form-container">
     <%= form_tag bookmarks_url, :method => :get, :remote => true, "data-type" => "script" do %>
-      <%= text_field_tag "search" %>
+      <%= text_field_tag "search", params[:search], :placeholder_test => "Search by title or tag..." %>
     <% end %>
   </div>
 
