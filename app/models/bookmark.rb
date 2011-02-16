@@ -18,7 +18,8 @@ class Bookmark < ActiveRecord::Base
     if term.blank?
       scoped
     else
-      where("title LIKE :term OR cached_tag_list LIKE :term", :term => "%#{term}%")
+      where("UPPER(title) LIKE :term OR UPPER(cached_tag_list) LIKE :term", 
+            :term => "%#{term}%".upcase)
     end
   end
 
