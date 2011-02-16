@@ -14,7 +14,7 @@
 
 <div id="sidebar" class="grid_3">
   <h2>Search</h2>
-  <div class="form-container" style="margin-bottom: 10px">
+  <div class="form-container">
     <%= form_tag bookmarks_url, :method => :get, :remote => true, "data-type" => "script" do %>
       <%= text_field_tag "search" %>
     <% end %>
