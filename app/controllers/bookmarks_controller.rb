@@ -22,7 +22,7 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.new(params[:bookmark])
     @bookmark.save!
 
-    if (params[:source] == "bookmarklet")
+    if params[:source] == "bookmarklet"
       redirect_to @bookmark.url
     else
       redirect_to bookmarks_url
@@ -60,12 +60,22 @@ class BookmarksController < ApplicationController
     end
   end
 
-  private 
+  protected 
+
+  helper_method :paginating?
+
+  def paginating?
+    params[:page].to_i > 1
+  end
+
+  private
 
   def find_bookmarks
     @bookmarks = current_user.bookmarks.order("id desc")
 
-    if params[:tag]
+    if params[:search]
+      @bookmarks = @bookmarks.search(params[:search])
+    elsif params[:tag]
       @bookmarks = @bookmarks.tagged_with(params[:tag])
     end
 
