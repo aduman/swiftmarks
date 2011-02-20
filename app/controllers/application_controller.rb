@@ -26,7 +26,6 @@ class ApplicationController < ActionController::Base
   def require_no_user
     if current_user
       store_location
-      flash[:notice] = "You must be logged in to access this page"
       redirect_to bookmarks_url
       return false
     end
