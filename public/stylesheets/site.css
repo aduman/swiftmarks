@@ -40,6 +40,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* ===== FLASH MESSAGES ===== */
+
+#content div#flash-notice,
+#content div#flash-error {
+  color: #000;
+  font-weight: bold;
+  margin: 0px 10px 20px 10px;
+  padding: 10px;
+}
+
+#content div#flash-notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#content div#flash-error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+
 /* ===== FORMS ===== */
 
 .field_with_errors {
