@@ -26,8 +26,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
-gem 'mysql2'
-gem 'authlogic'
-gem 'acts-as-taggable-on'
-gem 'dynamic_form'
-gem 'will_paginate'
+gem 'mysql2', '0.2.6'
+gem 'authlogic', '2.1.6'
+gem 'acts-as-taggable-on', '2.0.6'
+gem 'dynamic_form', '1.1.3'
+gem 'will_paginate', '2.3.15'
