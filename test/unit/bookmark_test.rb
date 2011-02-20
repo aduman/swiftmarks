@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class BookmarkTest < ActiveSupport::TestCase
+
+  # CLASS METHOD TESTS
+
   test "search should return bookmarks whose title matches a given criteria" do
     bookmarks = Bookmark.search("google")
     assert_equal 1, bookmarks.size
@@ -25,6 +28,16 @@ class BookmarkTest < ActiveSupport::TestCase
     assert Bookmark.search("google").is_a?(ActiveRecord::Relation)
     assert Bookmark.search(nil).is_a?(ActiveRecord::Relation)
   end
+
+  test "import should import all bookmarks from a file for a user" do
+    assert_difference "users(:josh).bookmarks.count" do
+      File.open("test/fixtures/bookmarks_to_import.html") do |file|
+        Bookmark.import(file, users(:josh).id)
+      end
+    end
+  end
+
+  # INSTANCE METHOD TESTS
 
   test "should define a per_page with a default value" do
     assert_equal 50, Bookmark.per_page 
