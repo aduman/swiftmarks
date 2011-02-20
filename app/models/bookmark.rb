@@ -30,15 +30,13 @@ class Bookmark < ActiveRecord::Base
   def self.import(data, user_id)
     bookmarks = []
 
-    data.each do |line|
-      if /<DT><A HREF="(.*)" ADD_DATE="(.*)" PRIVATE="(.*)" TAGS="(.*)">(.*)<\/A>$/.match(line)
-        bookmarks << {
-          :url => $1,
-          :title => $5,
-          :tag_list => $4,
-          :user_id => user_id
-        }
-      end
+    Nokogiri::HTML(data.read).css("a").each do |link|
+      bookmarks << {
+        :url      => link.attributes["href"],
+        :title    => link.inner_html,
+        :tag_list => link.attributes["tags"].to_s.split(" ").join(","),
+        :user_id  => user_id
+      }
     end
 
     if !bookmarks.empty?
