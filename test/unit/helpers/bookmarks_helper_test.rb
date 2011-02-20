@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class BookmarksHelperTest < ActionView::TestCase
+  setup do
+    BookmarksHelper.send(:include, ApplicationHelper)
+  end
+
   test "tag_list_for should return 'Untagged' for a bookmark without tags" do
     bookmark = Bookmark.new
     assert_equal "Untagged", tag_list_for(bookmark)
