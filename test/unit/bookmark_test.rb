@@ -29,9 +29,9 @@ class BookmarkTest < ActiveSupport::TestCase
     assert Bookmark.search(nil).is_a?(ActiveRecord::Relation)
   end
 
-  test "import should import all bookmarks from a file for a user" do
+  test "import should import all bookmarks from a valid file for a user" do
     assert_difference "users(:josh).bookmarks.count" do
-      File.open("test/fixtures/bookmarks_to_import.html") do |file|
+      File.open("test/fixtures/valid_bookmarks_to_import.html") do |file|
         Bookmark.import(file, users(:josh).id)
       end
     end

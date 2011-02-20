@@ -103,7 +103,7 @@ class BookmarksControllerTest < ActionController::TestCase
 
   test "import should create bookmarks in uploaded file" do
     assert_difference "users(:josh).bookmarks.count" do
-      post :import, :file => File.open(File.join(Rails.root.to_s, "test/fixtures/bookmarks_to_import.html"), "r")
+      post :import, :file => File.open("test/fixtures/valid_bookmarks_to_import.html")
     end
 
     assert_equal "Bookmarks successfully imported!", flash[:notice]
