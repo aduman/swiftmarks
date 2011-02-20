@@ -40,7 +40,7 @@ class Bookmark < ActiveRecord::Base
     end
 
     if !bookmarks.empty?
-      create!(bookmarks)
+      transaction { create!(bookmarks) }
     end
   end
 

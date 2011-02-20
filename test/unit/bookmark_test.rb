@@ -37,6 +37,16 @@ class BookmarkTest < ActiveSupport::TestCase
     end
   end
 
+  test "import should raise an exception and not import anything when file has invalid bookmarks" do
+    assert_no_difference "users(:josh).bookmarks.count" do
+      assert_raise ActiveRecord::RecordInvalid do
+        File.open("test/fixtures/invalid_bookmarks_to_import.html") do |file|
+          Bookmark.import(file, users(:josh).id)
+        end
+      end
+    end
+  end
+
   # INSTANCE METHOD TESTS
 
   test "should define a per_page with a default value" do
