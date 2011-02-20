@@ -109,4 +109,13 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_equal "Bookmarks successfully imported!", flash[:notice]
     assert_redirected_to bookmarks_url
   end
+
+  test "import should display an error when importing file with invalid bookmarks" do
+    assert_no_difference "users(:josh).bookmarks.count" do
+      post :import, :file => File.open("test/fixtures/invalid_bookmarks_to_import.html")
+    end
+
+    assert_equal "File contains invalid bookmarks!", flash[:error]
+    assert_template "bookmarks/import"
+  end
 end

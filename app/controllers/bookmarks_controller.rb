@@ -53,9 +53,13 @@ class BookmarksController < ApplicationController
       if file_data.blank?
         flash[:error] = "File cannot be empty!"
       else
-        Bookmark.import(file_data, current_user.id)
-        flash[:notice] = "Bookmarks successfully imported!"
-        redirect_to bookmarks_url
+        begin
+          Bookmark.import(file_data, current_user.id)
+          flash[:notice] = "Bookmarks successfully imported!"
+          redirect_to bookmarks_url
+        rescue ActiveRecord::RecordInvalid
+          flash[:error] = "File contains invalid bookmarks!"
+        end
       end
     end
   end
