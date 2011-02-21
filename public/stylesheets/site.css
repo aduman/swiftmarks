@@ -137,6 +137,12 @@ div.form-container form textarea {
   text-decoration: underline;
 }
 
+#bookmarks-menu a#import-bookmarks-link {
+  font-size: 14px;
+  float: right;
+  margin-top: 4px;
+}
+
 #bookmarks-list {
   margin-bottom: 20px;
 }
