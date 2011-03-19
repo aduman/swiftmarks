@@ -16,7 +16,7 @@
 <div id="sidebar" class="grid_3">
   <h2>Search</h2>
   <div class="form-container">
-    <%= form_tag bookmarks_url, options_for_remote_script.merge(:method => :get) do %>
+    <%= form_tag bookmarks_url, :method => :get do %>
       <%= text_field_tag "search", params[:search], :placeholder => "Search by title or tag..." %>
     <% end %>
   </div>
@@ -26,14 +26,14 @@
   <ul class="tag-list">
     <% @tags.each do |tag| %>
       <li>
-        <%= link_to_remote_script bookmarks_url(:tag => tag.name) do %>
+        <%= link_to bookmarks_url(:tag => tag.name) do %>
           <%= tag_name_with_count_for(tag) %>
         <% end %>
       </li>
     <% end %>
 
     <li>
-      <%= link_to_remote_script "Show All", bookmarks_url %>
+      <%= link_to "Show All", bookmarks_url %>
     </li>
   </ul>
 </div>
