@@ -187,23 +187,29 @@ div.form-container form textarea {
 /* ===== CONTENT: Bookmarks Pagination ===== */
 
 #pagination {
-  margin-bottom: 20px;
+  margin: 20px 0px;
+  text-align: center;
 }
 
-#pagination a {
+#pagination a,
+#pagination span {
   border: solid 1px #DDD;
   color: #666;
-  display: block;
-  font-weight: bold;
-  text-align: center;
+  margin: 2px;
+  padding: 2px 5px;
   text-decoration: none;
-  padding: 10px;
-  width: auto;
 }
 
-#pagination a:hover {
+#pagination a:hover, 
+#pagination a:active,
+#pagination span.current {
   border: solid 1px #000;
   color: #000;
+}
+
+#pagination span.disabled {
+  border: solid 1px #EEE;
+  color: #DDD;
 }
 
 
