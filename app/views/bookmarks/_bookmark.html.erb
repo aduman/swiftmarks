@@ -3,7 +3,7 @@
     <%= link_to bookmark.title, bookmark.url %>
   </div>
   <div class="grid_7 alpha tags">
-    <%= tag_list_for(bookmark) %> | <%= hostname_for(bookmark) %>
+    <%= tag_list_for(bookmark) %> | <%= bookmark.host %>
   </div>
   <div class="grid_2 omega actions">
     <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>

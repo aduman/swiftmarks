@@ -24,16 +24,6 @@ class BookmarksHelperTest < ActionView::TestCase
     assert_nil tag_name_with_count_for(nil)
   end
 
-  test "hostname_for should return a bookmark's hostname when present" do
-    bookmark = Bookmark.new(:url => "http://www.example.com")
-    assert "(www.example.com)", hostname_for(bookmark)
-  end
-
-  test "hostname_for should return nil for a bookmark without a host" do
-    bookmark = Bookmark.new
-    assert_nil hostname_for(bookmark)
-  end
-
   test "link_to_next_page should not be blank when next page exists" do
     bookmarks = Bookmark.all.paginate(:page => 1, :per_page => 1)
     controller.params = hash_for_bookmarks_url
