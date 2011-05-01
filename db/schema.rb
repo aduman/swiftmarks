@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208042846) do
+ActiveRecord::Schema.define(:version => 20110501234507) do
 
   create_table "bookmarks", :force => true do |t|
     t.string   "url"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110208042846) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "cached_tag_list"
+    t.boolean  "starred"
   end
 
   create_table "sessions", :force => true do |t|
