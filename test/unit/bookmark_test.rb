@@ -105,4 +105,16 @@ class BookmarkTest < ActiveSupport::TestCase
     b = Bookmark.new
     assert_nil b.host
   end
+
+  test "should toggle a starred bookmark to unstarred" do
+    b = Bookmark.new(:starred => true)
+    b.toggle_starred
+    assert !b.starred?
+  end
+
+  test "should toggle an unstarred bookmark to starred" do
+    b = Bookmark.new(:starred => false)
+    b.toggle_starred
+    assert b.starred?
+  end
 end

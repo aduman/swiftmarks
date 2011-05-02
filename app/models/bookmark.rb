@@ -47,4 +47,8 @@ class Bookmark < ActiveRecord::Base
   def host
     URI.parse(url).host rescue nil
   end
+
+  def toggle_starred
+    self.starred = !self.starred?
+  end
 end
