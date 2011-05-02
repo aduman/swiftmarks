@@ -8,8 +8,8 @@ class BookmarksControllerTest < ActionController::TestCase
 
   test "index should return a paged set of bookmarks for current user" do
     get :index
-    assert_equal %w(Google), assigns(:bookmarks).map(&:title)
-    assert_equal %w(search shopping), assigns(:tags).map(&:name)
+    assert_equal 1, assigns(:bookmarks).size
+    assert_equal users(:josh).id, assigns(:bookmarks).first.user_id
     assert_response :success
     assert_template "bookmarks/index"
   end
@@ -117,5 +117,24 @@ class BookmarksControllerTest < ActionController::TestCase
 
     assert_equal "File contains invalid bookmarks!", flash[:error]
     assert_template "bookmarks/import"
+  end
+
+  test "toggle should respond with js format" do
+    put :toggle, :id => bookmarks(:unstarred).id, :format => 'js'
+    assert_equal Mime::JS, response.content_type
+    assert_response :success
+    assert_template "bookmarks/toggle"
+  end
+
+  test "toggle should mark an unstarred bookmark as starred" do
+    put :toggle, :id => bookmarks(:unstarred).id        
+    assert assigns(:bookmark).starred?
+    assert_redirected_to bookmarks_url
+  end
+
+  test "toggle should mark a starred bookmark as unstarred" do
+    put :toggle, :id => bookmarks(:starred).id
+    assert !assigns(:bookmark).starred?
+    assert_redirected_to bookmarks_url
   end
 end

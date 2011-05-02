@@ -68,6 +68,10 @@ Swiftmarks::Application.routes.draw do
       get 'import'
       post 'import'
     end
+
+    member do
+      put 'toggle'
+    end
   end
 
   root :to => "pages#index"

@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   before_filter :require_user
   before_filter :find_bookmarks, :find_tags, :only => :index
-  before_filter :find_bookmark, :only => %w(edit update destroy)
+  before_filter :find_bookmark, :only => %w(edit update destroy toggle)
 
   def index
     respond_to do |format|
@@ -61,6 +61,16 @@ class BookmarksController < ApplicationController
           flash[:error] = "File contains invalid bookmarks!"
         end
       end
+    end
+  end
+
+  def toggle
+    @bookmark.toggle_starred
+    @bookmark.save!
+
+    respond_to do |format|
+      format.html { redirect_to bookmarks_url }
+      format.js
     end
   end
 

@@ -1,0 +1,5 @@
+<% if @bookmark.starred? %>
+  $("#star-<%= @bookmark.id %>").attr("class", "starred");
+<% else %>
+  $("#star-<%= @bookmark.id %>").attr("class", "unstarred");
+<% end %>

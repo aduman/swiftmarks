@@ -8,6 +8,7 @@ google:
   url: "http://www.google.com"
   title: Google
   description: Google Search Engine
+  starred: false
   cached_tag_list: search
   user: josh
 
@@ -15,5 +16,22 @@ amazon:
   url: "http://www.amazon.com"
   title: Amazon
   description: Online Shopping
+  starred: false
   cached_tag_list: shopping
+  user: josh
+
+starred:
+  url: "http://starred.dev"
+  title: Starred Bookmark
+  description: Starred Bookmark
+  starred: true
+  cached_tag_list: starred
+  user: josh
+
+unstarred:
+  url: "http://unstarred.dev"
+  title: Unstarred Bookmark
+  description: Unstarred Bookmark
+  starred: false
+  cached_tag_list: unstarred
   user: josh
