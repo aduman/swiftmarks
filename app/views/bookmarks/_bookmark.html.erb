@@ -1,9 +1,10 @@
-<div class="bookmark">
+<div id="bookmark-<%= bookmark.id %>" class="bookmark">
   <div class="title">
+    <%= toggle_star_link_for bookmark %>
     <%= link_to bookmark.title, bookmark.url %>
   </div>
   <div class="grid_7 alpha tags">
-    <%= tag_list_for(bookmark) %> | <%= bookmark.host %>
+    <%= tag_list_for bookmark %> | <%= bookmark.host %>
   </div>
   <div class="grid_2 omega actions">
     <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>

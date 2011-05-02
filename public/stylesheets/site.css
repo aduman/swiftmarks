@@ -165,6 +165,16 @@ div.form-container form textarea {
   text-decoration: underline;
 }
 
+#bookmarks-list .title a.starred {
+  color: #C00;
+  text-decoration: none;
+}
+
+#bookmarks-list .title a.unstarred {
+  color: #D3D3D3;
+  text-decoration: none;
+}
+
 #bookmarks-list .bookmark .host,
 #bookmarks-list .bookmark .tags,
 #bookmarks-list .bookmark .actions {

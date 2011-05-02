@@ -37,4 +37,14 @@ class BookmarksHelperTest < ActionView::TestCase
     view.instance_variable_set(:@bookmarks, bookmarks)
     assert view.link_to_next_page.blank?
   end
+
+  test "toggle_star_link_for should return a star link to the toggle action" do
+    bookmark = bookmarks(:starred)
+    link = toggle_star_link_for(bookmark)
+    assert_match /id="star-#{bookmark.id}"/, link
+    assert_match /class="starred"/, link
+    assert_match /href="#{toggle_bookmark_url(bookmark)}"/, link
+    assert_match /data-type="script"/, link
+    assert_match /data-remote="true"/, link
+  end
 end

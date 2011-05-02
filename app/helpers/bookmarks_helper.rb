@@ -19,4 +19,17 @@ module BookmarksHelper
       link_to_remote_script "More", next_page, :id => "next-page"
     end
   end
+
+  def toggle_star_link_for(bookmark, options={})
+    defaults = {
+      :id     => "star-#{bookmark.id}",
+      :class  => (bookmark.starred? ? 'starred' : 'unstarred'),
+      :method => :put,
+      :remote => true,
+      'data-type' => 'script'
+    }
+
+    options = defaults.merge(options)
+    return link_to("&#9733".html_safe, toggle_bookmark_url(bookmark), options)
+  end
 end
