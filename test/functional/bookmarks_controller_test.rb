@@ -29,6 +29,15 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_template "bookmarks/index"
   end
 
+  test "starred should return a paged set of starred bookmarks for current user" do
+    get :starred
+    assert_equal 1, assigns(:bookmarks).size
+    assert assigns(:bookmarks).all? { |b| b.starred? }
+    assert_equal users(:josh).id, assigns(:bookmarks).first.user_id
+    assert_response :success
+    assert_template "bookmarks/index"
+  end
+
   test "new should render template new" do
     get :new
     assert_response :success

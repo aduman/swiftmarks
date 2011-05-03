@@ -65,6 +65,7 @@ Swiftmarks::Application.routes.draw do
   
   resources :bookmarks do
     collection do
+      get 'starred'
       get 'import'
       post 'import'
     end

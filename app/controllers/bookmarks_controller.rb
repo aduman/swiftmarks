@@ -1,13 +1,19 @@
 class BookmarksController < ApplicationController
   before_filter :require_user
-  before_filter :find_bookmarks, :find_tags, :only => :index
+  before_filter :find_tags, :only => [:index, :starred]
   before_filter :find_bookmark, :only => %w(edit update destroy toggle)
 
   def index
+    find_bookmarks
     respond_to do |format|
       format.html
       format.js
     end
+  end
+
+  def starred
+    find_starred_bookmarks
+    render :action => "index"
   end
 
   def new
@@ -93,10 +99,12 @@ class BookmarksController < ApplicationController
       @bookmarks = @bookmarks.tagged_with(params[:tag])
     end
 
-    @bookmarks = @bookmarks.paginate(
-      :page => params[:page], 
-      :per_page => Bookmark.per_page
-    )
+    paginate!
+  end
+
+  def find_starred_bookmarks
+    @bookmarks = current_user.bookmarks.starred.order("id desc")
+    paginate!
   end
 
   def find_bookmark
@@ -105,5 +113,12 @@ class BookmarksController < ApplicationController
 
   def find_tags
     @tags = current_user.bookmarks.tag_counts.sort_by(&:name)
+  end
+
+  def paginate!
+    @bookmarks = @bookmarks.paginate(
+      :page     => params[:page],
+      :per_page => Bookmark.per_page
+    )
   end
 end
