@@ -13,27 +13,29 @@
   </div>
 </div>
 
-<div id="sidebar" class="grid_3">
-  <h2>Search</h2>
-  <div class="form-container">
-    <%= form_tag bookmarks_url, :method => :get do %>
-      <%= text_field_tag "search", params[:search], :placeholder => "Search by title or tag..." %>
-    <% end %>
-  </div>
+<div class="grid_3">
+  <div id="sidebar">
+    <h2>Search</h2>
+    <div class="form-container">
+      <%= form_tag bookmarks_url, :method => :get do %>
+        <%= text_field_tag "search", params[:search], :placeholder => "Search by title or tag..." %>
+      <% end %>
+    </div>
 
-  <h2>Tags</h2>
+    <h2>Tags</h2>
 
-  <ul class="tag-list">
-    <% @tags.each do |tag| %>
+    <ul>
+      <% @tags.each do |tag| %>
+        <li>
+          <%= link_to bookmarks_url(:tag => tag.name) do %>
+            <%= tag_name_with_count_for(tag) %>
+          <% end %>
+        </li>
+      <% end %>
+
       <li>
-        <%= link_to bookmarks_url(:tag => tag.name) do %>
-          <%= tag_name_with_count_for(tag) %>
-        <% end %>
+        <%= link_to "Show All", bookmarks_url %>
       </li>
-    <% end %>
-
-    <li>
-      <%= link_to "Show All", bookmarks_url %>
-    </li>
-  </ul>
+    </ul>
+  </div>
 </div>
