@@ -10,6 +10,8 @@ class Bookmark < ActiveRecord::Base
 
   cattr_accessor :per_page
 
+  scope :starred, where("starred = 1")
+
   def self.per_page
     @@per_page ||= 50
   end
