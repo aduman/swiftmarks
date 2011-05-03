@@ -22,8 +22,17 @@
       <% end %>
     </div>
 
-    <h2>Tags</h2>
+    <h2>Bookmarks</h2>
+    <ul>
+      <li>
+        <%= link_to "Starred", starred_bookmarks_url %>
+      </li>
+      <li>
+        <%= link_to "Show All", bookmarks_url %>
+      </li>
+    </ul>
 
+    <h2>Tags</h2>
     <ul>
       <% @tags.each do |tag| %>
         <li>
@@ -32,10 +41,6 @@
           <% end %>
         </li>
       <% end %>
-
-      <li>
-        <%= link_to "Show All", bookmarks_url %>
-      </li>
     </ul>
   </div>
 </div>
