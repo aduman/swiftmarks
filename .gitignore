@@ -1,4 +1,7 @@
 .bundle
+Capfile
+config/database.yml
+config/deploy.rb
 db/*.sqlite3
 log/*.log
 tmp/**/*
