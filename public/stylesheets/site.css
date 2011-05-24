@@ -16,6 +16,10 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.black {
+  color: #000;
+}
+
 
 /* ===== HEADER ===== */
 
@@ -97,29 +101,35 @@ div.form-container form textarea {
 
 /* ===== CONTENT: Home Page ===== */
 
+#statement-title {
+  font-size: 36px;
+  margin-top: 20px;
+  text-align: center;
+}
+
 #statement {
+  border-top: solid 1px #D3D3D3;
+  border-bottom: solid 1px #D3D3D3;
+  color: #000;
+  font-size: 30px;
+  margin-bottom: 30px;
+  padding: 20px 60px;
+  text-align: center;
+}
+
+#statement a.sign-up-button {
   background-color: #C00;
-}
-
-#statement p {
+  border-radius: 5px;
   color: #FFF;
-  font-size: 24px;
-  margin: 0 auto;
-  padding: 40px;
-  width: 600px;
+  display: block;
+  font-size: 23px;
+  margin: 20px auto 10px auto;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 175px;
 }
 
-#feature-title {
-  margin: 20px 10px;
-}
-
-.feature {
-  background-color: #EEE;
-  border: solid 1px #DDD;
-  font-size: 14px;
-  height: 225px;
-  padding: 15px;
-}
 
 
 /* ===== CONTENT: Bookmarks Index ===== */
