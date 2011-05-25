@@ -12,17 +12,14 @@ class Bookmark < ActiveRecord::Base
 
   scope :starred, where(:starred => true)
 
-  def self.per_page
-    @@per_page ||= 50
+  define_index do
+    indexes title
+    indexes cached_tag_list
+    has user_id
   end
 
-  def self.search(term)
-    if term.blank?
-      scoped
-    else
-      where("UPPER(title) LIKE :term OR UPPER(cached_tag_list) LIKE :term", 
-            :term => "%#{term}%".upcase)
-    end
+  def self.per_page
+    @@per_page ||= 50
   end
 
   def self.tag_counts(options = {})

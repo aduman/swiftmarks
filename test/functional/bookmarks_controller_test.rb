@@ -14,13 +14,6 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_template "bookmarks/index"
   end
 
-  test "index should allow bookmarks to be searched" do
-    get :index, :search => "amazon"
-    assert_equal %w(Amazon), assigns(:bookmarks).map(&:title)
-    assert_response :success
-    assert_template "bookmarks/index"
-  end
-
   test "index should filter bookmarks by tag for current user" do
     get :index, :tag => "shopping"
     assert_equal %w(Amazon), assigns(:bookmarks).map(&:title)
