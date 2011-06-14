@@ -1,14 +1,27 @@
 class BookmarksController < ApplicationController
   before_filter :require_user
-  before_filter :find_tags, :only => [:index, :starred]
-  before_filter :find_bookmark, :only => %w(edit update destroy toggle)
 
   def index
-    find_bookmarks
+    @tags      = find_tags
+    @bookmarks = current_user.bookmarks.order("id desc")
+
+    if params[:search]
+      @bookmarks = @bookmarks.search(params[:search])
+    elsif params[:tag]
+      @bookmarks = @bookmarks.tagged_with(params[:tag])
+    end
+
+    @bookmarks = @bookmarks.paginate(
+      :page     => params[:page],
+      :per_page => Bookmark.per_page
+    )
   end
 
   def starred
-    find_starred_bookmarks
+    @tags      = find_tags 
+    @bookmarks = current_user.bookmarks.starred.order("id desc")
+      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+
     render :action => "index"
   end
 
@@ -34,9 +47,11 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+    @bookmark = find_bookmark
   end
 
   def update
+    @bookmark = find_bookmark
     @bookmark.attributes = params[:bookmark]
     @bookmark.save!
     redirect_to bookmarks_url
@@ -45,6 +60,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
+    @bookmark = find_bookmark
     @bookmark.delete
     redirect_to bookmarks_url
   end
@@ -67,6 +83,7 @@ class BookmarksController < ApplicationController
   end
 
   def toggle
+    @bookmark = find_bookmark
     @bookmark.toggle_starred
     @bookmark.save!
 
@@ -78,35 +95,11 @@ class BookmarksController < ApplicationController
 
   private
 
-  def find_bookmarks
-    @bookmarks = current_user.bookmarks.order("id desc")
-
-    if params[:search]
-      @bookmarks = @bookmarks.search(params[:search])
-    elsif params[:tag]
-      @bookmarks = @bookmarks.tagged_with(params[:tag])
-    end
-
-    paginate!
-  end
-
-  def find_starred_bookmarks
-    @bookmarks = current_user.bookmarks.starred.order("id desc")
-    paginate!
-  end
-
   def find_bookmark
-    @bookmark = current_user.bookmarks.find(params[:id])
+    current_user.bookmarks.find(params[:id])
   end
 
   def find_tags
-    @tags = current_user.bookmarks.tag_counts.sort_by(&:name)
-  end
-
-  def paginate!
-    @bookmarks = @bookmarks.paginate(
-      :page     => params[:page],
-      :per_page => Bookmark.per_page
-    )
+    current_user.bookmarks.tag_counts.sort_by(&:name)
   end
 end
