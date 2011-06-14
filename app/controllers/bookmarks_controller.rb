@@ -76,14 +76,6 @@ class BookmarksController < ApplicationController
     end
   end
 
-  protected 
-
-  helper_method :paginating?
-
-  def paginating?
-    params[:page].to_i > 1
-  end
-
   private
 
   def find_bookmarks
