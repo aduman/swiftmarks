@@ -1,7 +1,0 @@
-<% if paginating? %>
-  $("#bookmarks-list").append("<%= escape_javascript(render(@bookmarks)) %>");
-<% else %>
-  $("#bookmarks-list").html("<%= escape_javascript(render(@bookmarks)) %>");
-<% end %>
-
-$("#pagination").html("<%= escape_javascript(link_to_next_page) %>");

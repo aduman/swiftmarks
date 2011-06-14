@@ -5,10 +5,6 @@ class BookmarksController < ApplicationController
 
   def index
     find_bookmarks
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def starred
