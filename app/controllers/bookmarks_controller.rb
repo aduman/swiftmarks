@@ -3,18 +3,26 @@ class BookmarksController < ApplicationController
 
   def index
     @tags      = find_tags
-    @bookmarks = current_user.bookmarks.order("id desc")
+    @bookmarks = find_bookmarks
+      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+  end
 
-    if params[:search]
-      @bookmarks = @bookmarks.search(params[:search])
-    elsif params[:tag]
-      @bookmarks = @bookmarks.tagged_with(params[:tag])
-    end
+  def search
+    @tags      = find_tags
+    @bookmarks = find_bookmarks
+      .search(params[:q])
+      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
 
-    @bookmarks = @bookmarks.paginate(
-      :page     => params[:page],
-      :per_page => Bookmark.per_page
-    )
+    render :action => "index"
+  end
+  
+  def tagged
+    @tags      = find_tags
+    @bookmarks = find_bookmarks
+      .tagged_with(params[:id])
+      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+
+    render :action => "index"
   end
 
   def starred
@@ -94,6 +102,10 @@ class BookmarksController < ApplicationController
   end
 
   private
+
+  def find_bookmarks
+    current_user.bookmarks.order("id desc")
+  end
 
   def find_bookmark
     current_user.bookmarks.find(params[:id])

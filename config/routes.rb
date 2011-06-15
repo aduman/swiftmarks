@@ -62,9 +62,11 @@ Swiftmarks::Application.routes.draw do
   resources :pages
   resources :tags
   resources :users
-  
+
   resources :bookmarks do
     collection do
+      get 'search'
+      get 'tagged', :path => 'tagged(/:id)'
       get 'starred'
       get 'import'
       post 'import'

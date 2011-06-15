@@ -14,8 +14,9 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_template "bookmarks/index"
   end
 
-  test "index should filter bookmarks by tag for current user" do
-    get :index, :tag => "shopping"
+  test "tagged should return a paged set of bookmarks by tag for current user" do
+    get :tagged, :id => "shopping"
+    assert_equal 1, assigns(:bookmarks).size
     assert_equal %w(Amazon), assigns(:bookmarks).map(&:title)
     assert_equal %w(search shopping), assigns(:tags).map(&:name)
     assert_response :success
