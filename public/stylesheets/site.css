@@ -1,4 +1,5 @@
 body { 
+  border-top: solid 5px #C00;
   color: #666;
   font: 16px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
@@ -101,35 +102,54 @@ div.form-container form textarea {
 
 /* ===== CONTENT: Home Page ===== */
 
-#statement-title {
-  font-size: 36px;
-  margin-top: 20px;
+#headline {
+  font-family: Georgia, serif;
+  margin: 60px 0px 60px 0px;
   text-align: center;
 }
 
-#statement {
-  border-top: solid 1px #D3D3D3;
-  border-bottom: solid 1px #D3D3D3;
-  color: #000;
-  font-size: 30px;
-  margin-bottom: 30px;
-  padding: 20px 60px;
-  text-align: center;
+#headline h2 {
+  line-height: 1.1em;
+  font-size: 48px;
 }
 
-#statement a.sign-up-button {
+#headline h5 {
+  font-size: 28px;
+}
+
+#sign-up-button {
   background-color: #C00;
   border-radius: 5px;
   color: #FFF;
   display: block;
   font-size: 23px;
   margin: 20px auto 10px auto;
-  padding: 5px;
+  padding: 7px 5px;
   text-align: center;
   text-decoration: none;
   width: 175px;
 }
 
+#feature-list {
+  padding: 0px;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+#feature-list h3 { 
+  font-family: Georgia, serif;
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+
+#feature-list p {
+  letter-spacing: 1px;
+}
+
+#feature-list hr {
+  border-width: 1px;
+  border: solid 1px #E0E0E0;
+}
 
 
 /* ===== CONTENT: Bookmarks Index ===== */
