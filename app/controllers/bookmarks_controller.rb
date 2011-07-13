@@ -9,9 +9,10 @@ class BookmarksController < ApplicationController
 
   def search
     @tags      = find_tags
-    @bookmarks = find_bookmarks
-      .search(params[:q])
-      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+    @bookmarks = Bookmark.search(params[:q], 
+      with:     { user_id: current_user.id },
+      page:     params[:page],
+      per_page: Bookmark.per_page)
 
     render :action => "index"
   end
