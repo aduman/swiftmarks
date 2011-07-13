@@ -5,11 +5,11 @@
   </div>
 
   <div id="bookmarks-list">
-    <%= render @bookmarks %>
+    <%= render bookmarks %>
   </div>
 
   <div id="pagination">
-    <%= will_paginate @bookmarks %>
+    <%= will_paginate bookmarks %>
   </div>
 </div>
 
@@ -34,7 +34,7 @@
 
     <h2>Tags</h2>
     <ul>
-      <% @tags.each do |tag| %>
+      <% tags.each do |tag| %>
         <li>
           <%= link_to tagged_bookmarks_url(:id => tag.name) do %>
             <%= tag_name_with_count_for(tag) %>

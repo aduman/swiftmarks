@@ -5,10 +5,7 @@ class BookmarksController < ApplicationController
   @@per_page = 50
 
   def index
-    @bookmarks = find_bookmarks
-      .paginate(page: params[:page], per_page: @@per_page)
-
-    @tags = find_tags
+    @bookmarks = bookmarks.paginate(page: params[:page], per_page: @@per_page)
   end
 
   def search
@@ -17,26 +14,20 @@ class BookmarksController < ApplicationController
       page: params[:page],
       per_page: @@per_page)
 
-    @tags = find_tags
-    render action: "index"
+    render :index
   end
   
   def tagged
-    @bookmarks = find_bookmarks
+    @bookmarks = bookmarks
       .tagged_with(params[:id])
       .paginate(page: params[:page], per_page: @@per_page)
 
-    @tags = find_tags
-    render action: "index"
+    render :index
   end
 
   def starred
-    @bookmarks = find_bookmarks
-      .starred
-      .paginate(page: params[:page], per_page: @@per_page)
-
-    @tags = find_tags 
-    render action: "index"
+    @bookmarks = bookmarks.starred.paginate(page: params[:page], per_page: @@per_page)
+    render :index
   end
 
   def new
@@ -56,25 +47,22 @@ class BookmarksController < ApplicationController
       redirect_to bookmarks_url
     end
   rescue ActiveRecord::RecordInvalid
-    render action: "new"
+    render :new
   end
 
   def edit
-    @bookmark = find_bookmark
   end
 
   def update
-    @bookmark = find_bookmark
-    @bookmark.attributes = params[:bookmark]
-    @bookmark.save!
+    bookmark.attributes = params[:bookmark]
+    bookmark.save!
     redirect_to bookmarks_url
   rescue ActiveRecord::RecordInvalid
-    render action: "edit"
+    render :edit
   end
 
   def destroy
-    @bookmark = find_bookmark
-    @bookmark.delete
+    bookmark.delete
     redirect_to bookmarks_url
   end
 
@@ -96,9 +84,8 @@ class BookmarksController < ApplicationController
   end
 
   def toggle
-    @bookmark = find_bookmark
-    @bookmark.toggle_starred
-    @bookmark.save!
+    bookmark.toggle_starred
+    bookmark.save!
 
     respond_to do |format|
       format.html { redirect_to bookmarks_url }
@@ -106,17 +93,19 @@ class BookmarksController < ApplicationController
     end
   end
 
-  private
+  protected
 
-  def find_bookmarks
-    current_user.bookmarks.order("id desc")
+  helper_method :bookmarks, :bookmark, :tags
+
+  def bookmarks
+    @bookmarks ||= current_user.bookmarks.order("id desc")
   end
 
-  def find_bookmark
-    current_user.bookmarks.find(params[:id])
+  def tags
+    @tags ||= current_user.bookmarks.tag_counts.sort_by(&:name)
   end
 
-  def find_tags
-    current_user.bookmarks.tag_counts.sort_by(&:name)
+  def bookmark
+    @bookmark ||= current_user.bookmarks.find(params[:id])
   end
 end
