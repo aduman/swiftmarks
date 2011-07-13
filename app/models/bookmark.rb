@@ -8,18 +8,12 @@ class Bookmark < ActiveRecord::Base
   validates_presence_of :url, :title, :user_id
   validates_format_of :url, :with => URI.regexp(URI_SCHEMES)
 
-  cattr_accessor :per_page
-
   scope :starred, where(:starred => true)
 
   define_index do
     indexes title
     indexes cached_tag_list
     has user_id
-  end
-
-  def self.per_page
-    @@per_page ||= 50
   end
 
   def self.tag_counts(options = {})

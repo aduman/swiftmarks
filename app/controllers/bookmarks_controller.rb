@@ -1,10 +1,13 @@
 class BookmarksController < ApplicationController
   before_filter :require_user
 
+  cattr_accessor :per_page
+  @@per_page = 50
+
   def index
     @bookmarks = find_bookmarks
-      .paginate(page: params[:page], per_page: Bookmark.per_page)
-    
+      .paginate(page: params[:page], per_page: @@per_page)
+
     @tags = find_tags
   end
 
@@ -12,7 +15,7 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.search(params[:q], 
       with: { user_id: current_user.id },
       page: params[:page],
-      per_page: Bookmark.per_page)
+      per_page: @@per_page)
 
     @tags = find_tags
     render action: "index"
@@ -21,7 +24,7 @@ class BookmarksController < ApplicationController
   def tagged
     @bookmarks = find_bookmarks
       .tagged_with(params[:id])
-      .paginate(page: params[:page], per_page: Bookmark.per_page)
+      .paginate(page: params[:page], per_page: @@per_page)
 
     @tags = find_tags
     render action: "index"
@@ -30,7 +33,7 @@ class BookmarksController < ApplicationController
   def starred
     @bookmarks = find_bookmarks
       .starred
-      .paginate(page: params[:page], per_page: Bookmark.per_page)
+      .paginate(page: params[:page], per_page: @@per_page)
 
     @tags = find_tags 
     render action: "index"

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class BookmarksControllerTest < ActionController::TestCase
   setup do
+    BookmarksController.per_page = 1
     UserSession.create(users(:josh))
-    Bookmark.per_page = 1
   end
 
   test "index should return a paged set of bookmarks for current user" do
