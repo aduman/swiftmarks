@@ -2,44 +2,45 @@ class BookmarksController < ApplicationController
   before_filter :require_user
 
   def index
-    @tags      = find_tags
     @bookmarks = find_bookmarks
-      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+      .paginate(page: params[:page], per_page: Bookmark.per_page)
+    
+    @tags = find_tags
   end
 
   def search
-    @tags      = find_tags
     @bookmarks = Bookmark.search(params[:q], 
-      with:     { user_id: current_user.id },
-      page:     params[:page],
+      with: { user_id: current_user.id },
+      page: params[:page],
       per_page: Bookmark.per_page)
 
-    render :action => "index"
+    @tags = find_tags
+    render action: "index"
   end
   
   def tagged
-    @tags      = find_tags
     @bookmarks = find_bookmarks
       .tagged_with(params[:id])
-      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+      .paginate(page: params[:page], per_page: Bookmark.per_page)
 
-    render :action => "index"
+    @tags = find_tags
+    render action: "index"
   end
 
   def starred
-    @tags      = find_tags 
-    @bookmarks = current_user.bookmarks.starred.order("id desc")
-      .paginate(:page => params[:page], :per_page => Bookmark.per_page)
+    @bookmarks = find_bookmarks
+      .starred
+      .paginate(page: params[:page], per_page: Bookmark.per_page)
 
-    render :action => "index"
+    @tags = find_tags 
+    render action: "index"
   end
 
   def new
-    @bookmark = Bookmark.new({
-      :url => params[:url],
-      :title => params[:title],
-      :description => params[:description]
-    })
+    @bookmark = Bookmark.new(
+      url: params[:url],
+      title: params[:title],
+      description: params[:description])
   end
 
   def create
@@ -52,7 +53,7 @@ class BookmarksController < ApplicationController
       redirect_to bookmarks_url
     end
   rescue ActiveRecord::RecordInvalid
-    render :action => "new"
+    render action: "new"
   end
 
   def edit
@@ -65,7 +66,7 @@ class BookmarksController < ApplicationController
     @bookmark.save!
     redirect_to bookmarks_url
   rescue ActiveRecord::RecordInvalid
-    render :action => "edit"
+    render action: "edit"
   end
 
   def destroy
@@ -75,19 +76,19 @@ class BookmarksController < ApplicationController
   end
 
   def import
-    if request.post?
-      file_data = params[:file]
-      if file_data.blank?
-        flash[:error] = "File cannot be empty!"
-      else
-        begin
-          Bookmark.import(file_data, current_user.id)
-          flash[:notice] = "Bookmarks successfully imported!"
-          redirect_to bookmarks_url
-        rescue ActiveRecord::RecordInvalid
-          flash[:error] = "File contains invalid bookmarks!"
-        end
-      end
+    return if request.get?
+
+    if params[:file].blank?
+      flash[:error] = "File cannot be empty!"
+      return
+    end
+
+    begin
+      Bookmark.import(params[:file], current_user.id)
+      flash[:notice] = "Bookmarks successfully imported!"
+      redirect_to bookmarks_url
+    rescue ActiveRecord::RecordInvalid
+      flash[:error] = "File contains invalid bookmarks!"
     end
   end
 
