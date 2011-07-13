@@ -55,28 +55,28 @@
 <%= form_for bookmark do |f| %>
   <p>
     <%= f.label :url, "URL" %><em>*</em><br/>
-    <%= f.text_field :url, :style => "width: 350px" %>
-    <%= f.error_message_on :url, :prepend_text => "URL " %>
+    <%= f.text_field :url, style: "width: 350px" %>
+    <%= f.error_message_on :url, prepend_text: "URL " %>
   </p>
   <p>
     <%= f.label :title %><em>*</em><br/>
-    <%= f.text_field :title, :style => "width: 350px" %>
-    <%= f.error_message_on :title, :prepend_text => "Title " %>
+    <%= f.text_field :title, style: "width: 350px" %>
+    <%= f.error_message_on :title, prepend_text: "Title " %>
   </p>
   <p>
     <%= f.label :description %><br/>
-    <%= f.text_area :description, :size => "35x3" %>
+    <%= f.text_area :description, size: "35x3" %>
   </p>
   <p>
     <%= f.label :tag_list, "Tags" %><br/>
-    <%= f.text_field :tag_list, :style => "width: 350px" %>
+    <%= f.text_field :tag_list, style: "width: 350px" %>
   </p>
 
   <%= hidden_field_tag :source, params[:source] %>
 
   <p>
-    <%= submit_tag "Save", :style => "width: 75px" %>
+    <%= submit_tag "Save", style: "width: 75px" %>
     <span class="weak">&nbsp;|&nbsp;</span>
-    <%= link_to "Back to my bookmarks", bookmarks_url, :class => "link-button" %>
+    <%= link_to "Back to my bookmarks", bookmarks_url, class: "link-button" %>
   </p>
 <% end %>

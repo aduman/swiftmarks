@@ -1,7 +1,7 @@
 <div class="grid_4 push_4 form-container">
   <h2>Import Bookmarks</h2>
 
-  <%= form_tag url_for(:action => "import"), :method => "post", :multipart => true do %>
+  <%= form_tag url_for(action: "import"), method: "post", multipart: true do %>
     <p>
       <%= label_tag :file %><br/>
       <%= file_field_tag :file %>

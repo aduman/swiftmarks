@@ -1,7 +1,7 @@
 <div class="grid_9">
   <div id="bookmarks-menu">
-    <%= link_to "+ Add Bookmark", new_bookmark_url, :id => "add-bookmark-link" %>
-    <%= link_to "Import", import_bookmarks_url, :id => "import-bookmarks-link" %>
+    <%= link_to "+ Add Bookmark", new_bookmark_url, id: "add-bookmark-link" %>
+    <%= link_to "Import", import_bookmarks_url, id: "import-bookmarks-link" %>
   </div>
 
   <div id="bookmarks-list">
@@ -17,8 +17,8 @@
   <div id="sidebar">
     <h2>Search</h2>
     <div class="form-container">
-      <%= form_tag search_bookmarks_url, :method => :get do %>
-        <%= text_field_tag "q", params[:q], :placeholder => "Search by title or tag..." %>
+      <%= form_tag search_bookmarks_url, method: "get" do %>
+        <%= text_field_tag "q", params[:q], placeholder: "Search by title or tag..." %>
       <% end %>
     </div>
 
@@ -36,7 +36,7 @@
     <ul>
       <% tags.each do |tag| %>
         <li>
-          <%= link_to tagged_bookmarks_url(:id => tag.name) do %>
+          <%= link_to tagged_bookmarks_url(id: tag.name) do %>
             <%= tag_name_with_count_for(tag) %>
           <% end %>
         </li>

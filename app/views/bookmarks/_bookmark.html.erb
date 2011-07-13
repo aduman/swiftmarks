@@ -7,9 +7,9 @@
     <%= tag_list_for bookmark %> | <%= bookmark.host %>
   </div>
   <div class="grid_2 omega actions">
-    <%= link_to "Edit", edit_bookmark_url(bookmark), :class => "edit-bookmark-link" %>
+    <%= link_to "Edit", edit_bookmark_url(bookmark), class: "edit-bookmark-link" %>
     <span class="pipe">|</span>
-    <%= link_to "Delete", bookmark_url(bookmark), :method => :delete, :class => "delete-bookmark-link" %>
+    <%= link_to "Delete", bookmark_url(bookmark), method: "delete", class: "delete-bookmark-link" %>
   </div>
   <div class="clear"></div>
 </div>
