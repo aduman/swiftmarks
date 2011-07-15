@@ -40,11 +40,28 @@
 
     document.body.appendChild(iframe);
 
+
+    // IFRAME - DOCUMENT
+
+    var frameDocument;
+
+    if (iframe.contentDocument) {
+      frameDocument = iframe.contentDocument;
+    }
+    else if (iframe.contentWindow) {
+      frameDocument = iframe.contentWindow.document;
+    }
+    else {
+      frameDocument = window.frames[iframeName].document; 
+    }
+
+    frameDocument.open();
+    frameDocument.close();
+
     
     // IFRAME - BODY
 
-    var frameDocument = window[iframeName].document;
-    var frameBody     = window[iframeName].document.body;
+    var frameBody = frameDocument.body;
     frameBody.style.backgroundColor = '#FFF';
     frameBody.style.color = '#555';
     frameBody.style.fontFamily = 'Arial, sans-serif';
@@ -56,7 +73,7 @@
 
     var h1 = frameDocument.createElement('h1');
     h1.style.fontSize = '18px';
-    h1.innerText = formTitle;
+    h1.innerHTML = formTitle;
     
 
     // IFRAME - FORM
