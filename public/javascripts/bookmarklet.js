@@ -9,21 +9,34 @@
     // FUNCTIONS
 
     var closeFrameHandler = function(e) {
-      e.preventDefault();
+      preventDefault(e);
       closeFrame();
     }
 
     var submitFormHandler = function(e) {
-      e.preventDefault();
-      e.target.submit(); 
+      preventDefault(e);
+      currentTarget(e).submit();
       setTimeout(closeFrame, 350);
     }
 
     var closeFrame = function() {
-      var iframe = window.parent.document.getElementById(iframeName);
       iframe.parentNode.removeChild(iframe);
     }
+
+    var preventDefault = function(e) {
+      var evt = e || iframe.contentWindow.event;
+
+      if (evt.preventDefault) {
+        evt.preventDefault();
+      }
+
+      evt.returnValue = false;
+    }
     
+    var currentTarget = function(e) {
+      var evt = e || iframe.contentWindow.event;
+      return (evt.target) ? evt.target : evt.srcElement;
+    }
 
     // CREATE IFRAME
 
@@ -34,12 +47,11 @@
     iframe.style.position = 'fixed';
     iframe.style.left = '10px';
     iframe.style.top = '10px';
-    iframe.style.width = '400px';
-    iframe.style.height = '300px';
+    iframe.style.width = '425px';
+    iframe.style.height = '325px';
     iframe.style.border = 'solid 3px #AAA';
 
     document.body.appendChild(iframe);
-
 
     // IFRAME - DOCUMENT
 
@@ -97,7 +109,8 @@
     urlField.name = 'bookmark[url]';
     urlField.type = 'text';
     urlField.value = window.parent.location.href;
-    urlField.style.fontSize = '12px';
+    urlField.style.fontSize = '16px';
+    urlField.style.overflow = 'visible';
     urlField.style.padding = '5px';
     urlField.style.width = '95%';
 
@@ -115,7 +128,8 @@
     titleField.name = 'bookmark[title]';
     titleField.type = 'text';
     titleField.value = window.parent.document.title;
-    titleField.style.fontSize = '12px';
+    titleField.style.fontSize = '16px';
+    titleField.style.overflow = 'visible';
     titleField.style.padding = '5px';
     titleField.style.width = '95%';
 
@@ -132,7 +146,8 @@
     tagField.id = 'bookmark_tag_list';
     tagField.name = 'bookmark[tag_list]';
     tagField.type = 'text';
-    tagField.style.fontSize = '12px';
+    tagField.style.fontSize = '16px';
+    tagField.style.overflow = 'visible';
     tagField.style.padding = '5px';
     tagField.style.width = '95%';
 
