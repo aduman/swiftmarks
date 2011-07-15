@@ -90,7 +90,7 @@
 
     var urlLabel = frameDocument.createElement('label');
     urlLabel.setAttribute('for', 'bookmark_url');
-    urlLabel.innerText = 'URL'
+    urlLabel.innerHTML = 'URL'
 
     var urlField = frameDocument.createElement('input');
     urlField.id = 'bookmark_url';
@@ -108,7 +108,7 @@
 
     var titleLabel = frameDocument.createElement('label');
     titleLabel.setAttribute('for', 'bookmark_title');
-    titleLabel.innerText = 'Title';
+    titleLabel.innerHTML = 'Title';
 
     var titleField = frameDocument.createElement('input');
     titleField.id = 'bookmark_title';
@@ -126,7 +126,7 @@
 
     var tagLabel = frameDocument.createElement('label');
     tagLabel.setAttribute('for', 'bookmark_tag_list');
-    tagLabel.innerText = 'Tags';
+    tagLabel.innerHTML = 'Tags';
 
     var tagField = frameDocument.createElement('input');
     tagField.id = 'bookmark_tag_list';
