@@ -1,10 +1,11 @@
 module ApplicationHelper
   def bookmarklet_url
-    "javascript:" +
-    "document.location='#{new_bookmark_url(:only_path => false)}'+" + 
-    "'?source=bookmarklet'+" +
-    "'&url='+encodeURIComponent(location.href)+" +
-    "'&title='+encodeURIComponent(document.title)"
+    "javascript:(function() { " + 
+    "var _script=document.createElement('SCRIPT');" +
+    "_script.type='text/javascript';" +
+    "_script.src='http://swiftmarksapp.com/javascripts/bookmarklet.js';" +
+    "document.body.appendChild(_script);" +
+    "})();"
   end
 
   def link_to_remote_script(*args, &block)
