@@ -1,5 +1,6 @@
 class BookmarksController < ApplicationController
   before_filter :require_user
+  before_filter :store_location, only: %w(index search tagged starred)
 
   cattr_accessor :per_page
   @@per_page = 50
@@ -63,7 +64,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     bookmark.delete
-    redirect_to bookmarks_url
+    redirect_back_or_default bookmarks_url
   end
 
   def import

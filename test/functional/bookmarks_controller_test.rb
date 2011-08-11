@@ -6,6 +6,19 @@ class BookmarksControllerTest < ActionController::TestCase
     UserSession.create(users(:josh))
   end
 
+  %w(index tagged search starred).each do |action|
+    test "#{action} should store it's location before executing" do
+      begin
+        get action
+      rescue
+        # We're testing a before_filter, so we don't care if the action 
+        # throws an exception.
+      ensure
+        assert_equal request.fullpath, session[:return_to]
+      end
+    end
+  end
+
   test "index should return a paged set of bookmarks for current user" do
     get :index
     assert_equal 1, assigns(:bookmarks).size
