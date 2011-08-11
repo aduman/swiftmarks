@@ -12,6 +12,7 @@ class BookmarksController < ApplicationController
   def search
     @bookmarks = Bookmark.search(params[:q], 
       with: { user_id: current_user.id },
+      retry_stale: true,
       page: params[:page],
       per_page: @@per_page)
 
