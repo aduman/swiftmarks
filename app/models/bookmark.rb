@@ -1,18 +1,17 @@
 class Bookmark < ActiveRecord::Base
   URI_SCHEMES = %w(http https)
 
-  acts_as_taggable
-
-  belongs_to :user
-
-  validates_presence_of :url, :title, :user_id
-  validates_format_of :url, :with => URI.regexp(URI_SCHEMES)
-
   define_index do
     indexes title
     indexes cached_tag_list
     has user_id
   end
+
+  acts_as_taggable
+  belongs_to :user
+
+  validates_presence_of :url, :title, :user_id
+  validates_format_of :url, :with => URI.regexp(URI_SCHEMES)
 
   def self.import(data, user_id)
     bookmarks = []
