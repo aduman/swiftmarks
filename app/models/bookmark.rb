@@ -8,16 +8,10 @@ class Bookmark < ActiveRecord::Base
   validates_presence_of :url, :title, :user_id
   validates_format_of :url, :with => URI.regexp(URI_SCHEMES)
 
-  scope :starred, where(:starred => true)
-
   define_index do
     indexes title
     indexes cached_tag_list
     has user_id
-  end
-
-  def self.tag_counts(options = {})
-    tag_counts_on(:tags, options) 
   end
 
   def self.import(data, user_id)
@@ -35,6 +29,14 @@ class Bookmark < ActiveRecord::Base
     if !bookmarks.empty?
       transaction { create!(bookmarks) }
     end
+  end
+
+  def self.starred
+    where(starred: true)
+  end
+
+  def self.tag_counts(options = {})
+    tag_counts_on(:tags, options) 
   end
 
   def host
