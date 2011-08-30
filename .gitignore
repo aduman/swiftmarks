@@ -1,7 +1,9 @@
 .bundle
 Capfile
+config/*.sphinx.conf
 config/database.yml
 config/deploy.rb
 db/*.sqlite3
-log/*.log
-tmp/**/*
+db/sphinx/*
+log/*
+tmp/*
