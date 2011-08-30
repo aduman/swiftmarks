@@ -45,6 +45,16 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_template "bookmarks/index"
   end
 
+  test "search should return a paged set of results for current user" do
+    ThinkingSphinx::Test.run do
+      get :search, q: "Google"
+      assert_equal 1, assigns(:bookmarks).size
+      assert_equal users(:josh).id, assigns(:bookmarks).first.user_id
+      assert_response :success
+      assert_template "bookmarks/index"
+    end
+  end
+
   test "new should render template new" do
     get :new
     assert_response :success
