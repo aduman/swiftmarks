@@ -22,7 +22,28 @@
 </head>
 <body>
   <div id="header" class="container_12">
-    <%= render "shared/header" %>
+    <div class="grid_3">
+      <h1 id="logo">
+        <%= link_to "Swiftmarks", root_path %>
+      </h1>
+    </div>
+
+    <div class="grid_9">
+      <div id="navigation">
+        <% if current_user %>
+          <span id="welcome-message"><%= current_user.email %></span>
+          <span class="pipe">|</span>
+          <%= link_to "Bookmarklet", bookmarklet_url %>
+          <span class="pipe">|</span>
+          <%= link_to "Account", edit_account_path %>
+          <span class="pipe">|</span>
+          <%= link_to 'Logout', user_session_path, :method => :delete, :id => "logout-link" %>
+        <% else %>
+          <%= link_to "Create an Account", new_account_path %> or
+          <%= link_to "Sign In", new_user_session_path %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div id="content" class="container_12">
