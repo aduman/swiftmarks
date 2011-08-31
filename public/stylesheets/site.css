@@ -13,12 +13,22 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+.black {
+  color: #000;
+}
+
+
+/* ===== 960gs ===== */
+
 .container_12 {
   overflow: hidden;
 }
 
-.black {
-  color: #000;
+
+/* ===== jQuery UI ===== */
+
+.ui-autocomplete {
+  font-size: 14px !important;
 }
 
 
